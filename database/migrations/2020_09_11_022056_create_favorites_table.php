@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFavoriteTable extends Migration
+class CreateFavoritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateFavoriteTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('favorite')) {
-            Schema::create('favorite', function (Blueprint $table) {
+        if (!Schema::hasTable('favorites')) {
+            Schema::create('favorites', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('product_id');
                 $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
@@ -30,9 +30,8 @@ class CreateFavoriteTable extends Migration
      *
      * @return void
      */
-    public
-    function down()
+    public function down()
     {
-        Schema::dropIfExists('favorite');
+        Schema::dropIfExists('favorites');
     }
 }

@@ -12,7 +12,7 @@ class SuggestSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('suggest')->insert([
+        DB::table('suggests')->insert([
             [
                 'user_id' => '3',
                 'product_name' => 'Cafe dang',

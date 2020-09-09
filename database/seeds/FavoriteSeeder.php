@@ -12,7 +12,7 @@ class FavoriteSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('favorite')->insert([
+        DB::table('favorites')->insert([
             [
                 'product_id' => '1',
                 'user_id' => '3',
