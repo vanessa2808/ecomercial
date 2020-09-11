@@ -6,7 +6,9 @@ use App\Models\Product;
 use App\Models\OrderDetail;
 use App\Models\Order;
 use App\Repositories\Eloquent\ProductRepository;
+use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
+use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\User;
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 
     /**
@@ -36,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share('category_list', Category::all());
         View::share('product_list', Product::all());
+        View::share('user_list', User::all());
     }
 
 }

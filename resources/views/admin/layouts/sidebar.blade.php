@@ -35,13 +35,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('users.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>@lang('messages.admin_layouts.add_users')</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('users.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>@lang('messages.admin_layouts.list_users')</p>
                             </a>
