@@ -15,10 +15,7 @@ Auth::routes();
 |
 */
 
-
-Auth::routes();
-
-Route::group(['prefix'=>'admin'], function() {
+Route::group(['prefix' => 'admin'], function () {
     Route::get('/login', function () {
         return view('admin.login.login');
     });
@@ -63,5 +60,14 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' =
         ]);
 
         Route::resource('users', 'UserController');
+
+        Route::resource('orders', 'OrderController')->except('store');
+
+    });
+});
+
+Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function () {
+    Route::group(['prefix' => 'api'], function () {
+        Route::patch('/changeStatus', 'OrderController@changeStatus')->name('change.status');
     });
 });

@@ -18,7 +18,6 @@ class OrderController extends Controller
     protected $cart;
     protected $order;
     protected $product;
-    protected $orderDetailRepository;
 
     public function __construct(Product $product, Order $order, Cart $cart)
     {

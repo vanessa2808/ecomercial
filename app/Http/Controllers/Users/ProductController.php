@@ -24,9 +24,11 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $key = $request->input('key');
+        $category_list = $this->productRepository->getProducts();
         $product_list = Product::latest()->search($key)
             ->paginate(Config::get('app.paginate'));
-        return view('users.products.index', compact('product_list','key'));
+
+        return view('users.products.index', compact('product_list','key', 'category_list'));
 
     }
 

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="user_layouts/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="user_layouts/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="user_layouts/css/style.css" type="text/css">
+    <link rel="stylesheet" href="user_layouts/css/bootstrap.min.css.map" type="text/css">
+    <link rel="stylesheet" href="user_layouts/css/bootstrap.css.map" type="text/css">
     <link rel="stylesheet" href="css/category.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
@@ -41,6 +43,5 @@
 <script src="user_layouts/js/mixitup.min.js"></script>
 <script src="user_layouts/js/owl.carousel.min.js"></script>
 <script src="user_layouts/js/main.js"></script>
-<script src="js/addToCart.js"></script>
 </body>
 </html>

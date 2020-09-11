@@ -11,7 +11,7 @@ return [
     ],
     'status' => [
         'approved' => 1,
-        'unapproved' => '0'
+        'unapproved' => 0,
     ]
 ];
 

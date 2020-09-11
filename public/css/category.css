@@ -21,8 +21,14 @@
     max-width: 50px;
     max-height: 50px;
 }
+#styleImage {
+    width: auto;
+    height: auto;
+    max-width: 50px;
+    max-height: 50px;
+}
 
-#styleImage1 {
+#format_image {
     width: auto;
     height: auto;
     width: 300px;
