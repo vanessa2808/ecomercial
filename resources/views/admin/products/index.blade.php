@@ -20,6 +20,7 @@
                                 <th>@lang('messages.product.description')</th>
                                 <th>@lang('messages.product.image')</th>
                                 <th>@lang('messages.product.price')</th>
+                                <th>@lang('messages.product.amount')</th>
                                 <th>@lang('messages.product.create_at')</th>
                                 <th>@lang('messages.product.update_at')</th>
                                 <th>@lang('messages.category.action')</th>
@@ -34,6 +35,7 @@
                                     <td>{{$product->description}}</td>
                                     <td> <img id="styleImage" src="{{ asset('image/'.$product->product_image)}}"></td>
                                     <td>{{$product->price}}</td>
+                                    <td>{{$product->amount}}</td>
                                     <td>{{$product->created_at}}</td>
                                     <td>{{$product->updated_at}}</td>
                                     <td>

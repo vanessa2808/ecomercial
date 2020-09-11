@@ -105,6 +105,25 @@ return [
         'create_at' => 'Ngay Tao',
         'update_at' => 'Ngay Sua',
         'edit_product' => 'Sua San Pham',
-
-    ]
+    ],
+    'cart' => [
+        'shopping_cart' => 'Gio Hang',
+        'home' =>'Trang chu',
+        'product_name' =>'Ten san pham',
+        'price' => 'Gia',
+        'image' => 'Hinh Anh',
+        'quantity' => 'So Luong',
+        'total' => 'Tong So Luong',
+        'continue' => 'Tiep Tuc Mua Hang',
+        'update' => 'Cap Nhat Gio Hang',
+        'discount' => 'Ma Giam Gia',
+        'apply' => 'APPLY COUPON',
+        'total_quantity' => 'Tong so Luong',
+        'total' => 'Tong',
+        'checkout' => 'Tiep Tuc mua Hang',
+        'remove' => 'Xoa',
+        'cart_total' => 'Tong Tien',
+        'availability' => 'So luong',
+        'shipping' => 'Van Chuyen',
+    ],
 ];
