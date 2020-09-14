@@ -12,12 +12,15 @@ use App\Models\Comment;
 class User extends Authenticatable
 {
     use Notifiable;
+    public const ROLE_ADMIN = 0;
+    public const ROLE_USER = 1;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = 'users';
     protected $fillable = [
         'user_name',
         'role_id',
