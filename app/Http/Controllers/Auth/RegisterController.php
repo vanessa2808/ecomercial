@@ -63,7 +63,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'user_name' => $data['user_name'],
-            'role_id' => '1',
+            'role_id' => config('const.role.user'),
             'phone' => $data['phone'],
             'email' => $data['email'],
             'address' => $data['password'],

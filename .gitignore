@@ -3,7 +3,15 @@
 /public/storage
 /storage/*.key
 /vendor
+public/admin_layouts
+public/adminLogin
 .env
+.idea
+public/admin_layouts/build
+public/admin_layouts/dist
+public/admin_layouts/docs
+public/admin_layouts/pages
+public/admin_layouts/plugins
 .env.backup
 .phpunit.result.cache
 Homestead.json

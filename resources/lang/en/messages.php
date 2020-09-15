@@ -26,4 +26,21 @@ return [
     ],
     'toggle_navigation' => 'Toggle navigation',
     'logged_in' => 'You are logged in',
+    'admin_layouts' => [
+        'home' => 'Home',
+        'contact' => 'Contact',
+        'users' => 'Users',
+        'add_users' => 'Add_users',
+        'list_users' => 'List_users',
+        'category' => 'Categories',
+        'add_category' => 'Add_category',
+        'list_category' => 'List_category',
+        'product' => 'Products',
+        'add_product' => 'Add_products',
+        'list_product' => 'List_products',
+        'orders' => 'Orders',
+        'list_orders' => 'List_orders',
+        'suggest' => 'Suggest',
+        'list_suggest' => 'List_suggest'
+    ]
 ];

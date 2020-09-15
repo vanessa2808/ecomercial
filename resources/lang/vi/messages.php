@@ -26,4 +26,21 @@ return [
     ],
     'toggle_navigation' => 'Chuyển đổi thanh điều ',
     'logged_in' => 'Bạn đã đăng nhập',
+    'admin_layouts' => [
+        'home' => 'Trang Chu',
+        'contact' => 'Lien He',
+        'users' => 'Nguoi Dung',
+        'add_users' => 'Them Nguoi Dung',
+        'list_users' => 'Danh Sach Nguoi Dung',
+        'category' => 'Loai',
+        'add_category' => 'Them Loai',
+        'list_category' => 'Danh Sach Phan Loai',
+        'product' => 'San Pham',
+        'add_product' => 'Them San Pham',
+        'list_product' => 'Danh Sach San Pham',
+        'orders' => 'Dat Hang',
+        'list_orders' => 'Danh Sach Dat Hang',
+        'suggest' => 'De Suat',
+        'list_suggest' => 'Danh Sach De Suat'
+    ]
 ];
