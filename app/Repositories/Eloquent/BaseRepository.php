@@ -4,7 +4,6 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interfaces\BaseRepositoryInterface;
 use App\Repositories\Interfaces\RepositoryInterface;
-use mysql_xdevapi\Exception;
 
 abstract class BaseRepository implements BaseRepositoryInterface
 {

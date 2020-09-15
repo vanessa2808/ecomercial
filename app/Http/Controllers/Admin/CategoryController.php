@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -20,6 +21,7 @@ class CategoryController extends Controller
         $category_list = $this->categoryRepository->getCategories();
 
         return view('admin.categories.index', compact(['category_list']));
+
     }
 
     public function create()
@@ -27,6 +29,7 @@ class CategoryController extends Controller
         $category = $this->categoryRepository->getCategories();
 
         return view('admin.categories.add', compact(['category']));
+
     }
 
     public function store(CategoryRequest $request)
