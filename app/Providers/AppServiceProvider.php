@@ -3,6 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Category;
+use App\Models\User;
+use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
 
     /**
@@ -23,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::share('category_list', Category::all());
     }
+
 }

@@ -42,5 +42,19 @@ return [
         'list_orders' => 'List_orders',
         'suggest' => 'Suggest',
         'list_suggest' => 'List_suggest'
+    ],
+    'category' => [
+        'success' => 'Success',
+        'fail' => 'Fail',
+        'add_category' => 'Add Category',
+        'category_name' => 'Category Name',
+        'parent_id' => 'Parent ID',
+        'submit' => 'Submit',
+        'edit_category' => 'Edit Category',
+        'list_category' => 'List Category',
+        'id' => 'ID',
+        'action' => 'Action',
+        'edit' => 'Edit',
+        'delete' => 'Delete'
     ]
 ];

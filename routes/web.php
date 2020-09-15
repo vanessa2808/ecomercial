@@ -29,8 +29,8 @@ Route::group(['prefix'=>'admin'], function() {
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function() {
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('/dashboard', function () {
-            return view('admin.login.dashboard');
-        });
+        Route::resource('categories', 'CategoryController')->except([
+            'show'
+        ]);
     });
 });
