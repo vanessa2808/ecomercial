@@ -5,6 +5,7 @@
 /vendor
 public/admin_layouts
 public/adminLogin
+public/user_layouts
 .env
 .idea
 public/admin_layouts/build

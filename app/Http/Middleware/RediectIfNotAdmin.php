@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use League\Flysystem\Config;
 
 class RediectIfNotAdmin
 {
@@ -16,7 +17,7 @@ class RediectIfNotAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role_id != 0)
+        if (Auth::user()->role_id != Config('const.role.admin'))
         {
             return redirect('/home');
         }

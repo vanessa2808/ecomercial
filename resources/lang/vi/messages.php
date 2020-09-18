@@ -42,5 +42,19 @@ return [
         'list_orders' => 'Danh Sach Dat Hang',
         'suggest' => 'De Suat',
         'list_suggest' => 'Danh Sach De Suat'
+    ],
+    'category' => [
+        'success' => 'Thanh Cong',
+        'fail' => 'That Bai',
+        'add_category' => 'Them Loai',
+        'category_name' => 'Ten Loai',
+        'parent_id' => 'Loai Cha',
+        'submit' => 'Nop',
+        'edit_category' => 'Sua Loai',
+        'list_category' => 'Xoa Loai',
+        'id' => 'ID',
+        'action' => 'Hanh Dong',
+        'edit' => 'Sua',
+        'delete' => 'Xoa'
     ]
 ];

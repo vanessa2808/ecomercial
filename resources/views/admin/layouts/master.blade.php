@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="admin_layouts/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="admin_layouts/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="admin_layouts/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="css/category.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
