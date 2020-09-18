@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Product;
+use App\Repositories\Eloquent\ProductRepository;
+use App\Repositories\Interfaces\ProductRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\User;
@@ -19,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
     }
 
     /**
@@ -29,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('category_list', Category::all());
+        View::share('category_list', Product::all());
     }
 
 }

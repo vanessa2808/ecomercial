@@ -92,4 +92,19 @@ return [
         'en' => 'English',
         'vi' => 'Vietnamese',
     ],
+    'product' => [
+        'add_product' => 'Add_Product',
+        'category' => 'Category Name',
+        'product_name' => 'Product Name',
+        'description' => 'Description',
+        'price' => 'Price',
+        'list_product' => 'List Product',
+        'id' => 'Id',
+        'category_name' => 'Category Name',
+        'image' => 'Image',
+        'create_at' => 'Create_at',
+        'update_at' => 'Updated_at',
+        'edit_product' => 'Edit Product',
+
+    ]
 ];

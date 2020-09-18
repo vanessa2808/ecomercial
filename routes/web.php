@@ -34,5 +34,9 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' =
         Route::resource('categories', 'CategoryController')->except([
             'show'
         ]);
+
+        Route::resource('products', 'ProductController')->except([
+            'show'
+        ]);
     });
 });

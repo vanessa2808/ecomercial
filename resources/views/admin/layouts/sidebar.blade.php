@@ -82,13 +82,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('products.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>@lang('messages.admin_layouts.add_product')</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('products.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>@lang('messages.admin_layouts.list_product')</p>
                             </a>

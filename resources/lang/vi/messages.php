@@ -92,4 +92,19 @@ return [
         'en' => 'Tiếng Anh',
         'vi' => 'Tiếng Việt',
     ],
+    'product' => [
+        'add_product' => 'Them San Pham',
+        'category' => 'Ten Loai San Pham',
+        'product_name' => 'Ten San Pham',
+        'description' => 'Mo Ta',
+        'price' => 'Gia',
+        'list_product' => 'Danh Sach San Pham',
+        'id' => 'Id',
+        'category_name' => 'Ten Loai San Pham',
+        'image' => 'Hinh Anh',
+        'create_at' => 'Ngay Tao',
+        'update_at' => 'Ngay Sua',
+        'edit_product' => 'Sua San Pham',
+
+    ]
 ];

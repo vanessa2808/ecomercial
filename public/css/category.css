@@ -1,9 +1,30 @@
 #category_custom {
     width: 97%;
-    margin-left: 20px
+    margin-left: 20px;
+    margin-left: 20px;
+    margin-top: 4px;
 }
 
 #parent_id {
     width: 97%;
-    margin-left: 20px
+    margin-left: 20px;
+}
+
+#category_id {
+    width: 97%;
+    margin-left: 20px;
+}
+
+#styleImage {
+    width: auto;
+    height: auto;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+#styleImage1 {
+    width: auto;
+    height: auto;
+    width: 300px;
+    margin-left: 20px;
 }
