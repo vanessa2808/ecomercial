@@ -6,6 +6,7 @@
 public/admin_layouts
 public/adminLogin
 public/user_layouts
+public/image
 .env
 .idea
 public/admin_layouts/build
@@ -13,6 +14,9 @@ public/admin_layouts/dist
 public/admin_layouts/docs
 public/admin_layouts/pages
 public/admin_layouts/plugins
+public/user_layouts
+docker-compose.yml
+web
 .env.backup
 .phpunit.result.cache
 Homestead.json

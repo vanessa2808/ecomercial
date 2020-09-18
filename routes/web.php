@@ -27,6 +27,8 @@ Route::group(['prefix'=>'admin'], function() {
     });
 });
 
+Route::get('language/{language}', 'LanguageController@index')->name('language.index');
+
 Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function() {
     Route::group(['prefix' => 'admin'], function () {
         Route::resource('categories', 'CategoryController')->except([
