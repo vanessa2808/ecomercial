@@ -8,6 +8,10 @@ return [
     'locale' => [
         'vi' => 'vi',
         'en' => 'en'
+    ],
+    'status' => [
+        'approved' => 1,
+        'unapproved' => '0'
     ]
 ];
 

@@ -14,20 +14,20 @@ class OrderDetailSeeder extends Seeder
     {
         DB::table('order_details')->insert([
             [
-                'product_id' => '1',
-                'order_id' => '1',
+                'product_id' => '3',
+                'order_id' => '25',
                 'quantity' => '2',
                 'created_at' => Carbon::now(),
             ],
             [
-                'product_id' => '2',
-                'order_id' => '2',
+                'product_id' => '4',
+                'order_id' => '26',
                 'quantity' => '1',
                 'created_at' => Carbon::now(),
             ],
             [
-                'product_id' => '3',
-                'order_id' => '1',
+                'product_id' => '10',
+                'order_id' => '31',
                 'quantity' => '2',
                 'created_at' => Carbon::now(),
             ],

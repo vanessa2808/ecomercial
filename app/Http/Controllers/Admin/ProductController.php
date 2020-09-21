@@ -36,7 +36,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-        if ($this->productRepository->createProduct($request->only('category_id', 'product_name', 'description','product_image', 'price')))
+        if ($this->productRepository->createProduct($request->only('category_id', 'product_name', 'description','product_image', 'price','amount')))
         {
 
             return redirect()->route('products.index')->with('Success', trans('messages.product.success'));
