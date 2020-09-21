@@ -64,7 +64,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="#">@lang('messages.user_layouts.home')</a></li>
-                        <li><a href="#">@lang('messages.user_layouts.shop')</a></li>
+                        <li><a href="/shop">@lang('messages.user_layouts.shop')</a></li>
                         <li><a href="#">Cart</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="#">@lang('messages.user_layouts.shop_detail')</a></li>

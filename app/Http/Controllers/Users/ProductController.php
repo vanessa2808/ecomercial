@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 
 class ProductController extends Controller
 {
@@ -19,11 +21,12 @@ class ProductController extends Controller
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $product_list = $this->productRepository->getProductHome();
-
-        return view('users.products.index', compact(['product_list']));
+        $key = $request->input('key');
+        $product_list = Product::latest()->search($key)
+            ->paginate(Config::get('app.paginate'));
+        return view('users.products.index', compact('product_list','key'));
 
     }
 
@@ -42,7 +45,5 @@ class ProductController extends Controller
             'product' => $product
         ]);
     }
-
-
 
 }

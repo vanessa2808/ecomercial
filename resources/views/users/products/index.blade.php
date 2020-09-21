@@ -20,12 +20,13 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form action="{{route('home')}}" method="GET">
                                 <div class="hero__search__categories">
                                     @lang('messages.user_layouts.category')
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="@lang('messages.user_layouts.need')?">
+                                <input type="text" name="key" placeholder="@lang('messages.user_layouts.need')"
+                                       value="{{isset($key) ? $key: ''}}">
                                 <button type="submit" class="site-btn">@lang('messages.user_layouts.search')</button>
                             </form>
                         </div>
@@ -44,7 +45,8 @@
                             <span>TASTY FOOD</span>
                             <h2>Vegetable <br/>100% Organic</h2>
                             <p>@lang('messages.user_layouts.title')</p>
-                            <a href="#" class="primary-btn">@lang('messages.user_layouts.shop_now')</a>
+                            <a href="{{route('cart.show')}}"
+                               class="primary-btn">@lang('messages.user_layouts.shop_now')</a>
                         </div>
                     </div>
                 </div>
@@ -55,31 +57,15 @@
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="user_layouts/img/categories/cat-1.jpg">
-                            <h5><a href="#">Fresh Fruit</a></h5>
+                    @foreach($product_list as $key => $product)
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg"
+                                 data-setbg="{{ asset('image/'.$product->product_image)}}">
+                                <h5><a href="{{route('products.show',$product->id)}}">{{$product->product_name}}</a>
+                                </h5>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="user_layouts/img/categories/cat-2.jpg">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="user_layouts/img/categories/cat-3.jpg">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="user_layouts/img/categories/cat-4.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="user_layouts/img/categories/cat-5.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -110,7 +96,8 @@
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="{{ route('cart.add',$product)}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a href="{{ route('cart.add',$product)}}"><i
+                                                class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">
@@ -123,7 +110,7 @@
                 @endforeach
                 <div>
                     @if($product_list->hasPages())
-                        {{ $product_list->links() }}
+                        {{ $product_list->appends(['key' => $key])->links() }}
                     @endif
                 </div>
             </div>

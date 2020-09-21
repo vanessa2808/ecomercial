@@ -40,4 +40,10 @@ class Product extends Model
         return $this->hasMany(Comment::class, 'product_id', 'id');
     }
 
+    public function scopeSearch($query, $key)
+    {
+        return $query->where('product_name', 'like', '%' . $key . '%')
+            ->orWhere('price', 'like', '%' . $key . '%');
+    }
+
 }
