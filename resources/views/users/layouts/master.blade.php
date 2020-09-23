@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tasty Food</title>
     <base href="{{asset('')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="user_layouts/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="user_layouts/css/font-awesome.min.css" type="text/css">
@@ -17,6 +18,9 @@
     <link rel="stylesheet" href="user_layouts/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="user_layouts/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="user_layouts/css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/category.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 </head>
 <body>
 
@@ -38,5 +42,6 @@
 <script src="user_layouts/js/mixitup.min.js"></script>
 <script src="user_layouts/js/owl.carousel.min.js"></script>
 <script src="user_layouts/js/main.js"></script>
+<script src="js/addToCart.js"></script>
 </body>
 </html>

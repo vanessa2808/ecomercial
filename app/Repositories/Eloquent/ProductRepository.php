@@ -3,7 +3,6 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Product;
-use App\Models\Category;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use DB;
 use Illuminate\Support\Facades\Config;
@@ -20,6 +19,14 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
 
         return $this->model->paginate(Config::get('app.paginate'));
+
+    }
+
+    public function getProductHome()
+    {
+
+        return $this->model->paginate(Config::get('app.paginateHome'));
+
     }
 
     public function createProduct(array $data)
@@ -28,7 +35,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         try {
             if ($data['product_image']) {
                 $file = $data['product_image'];
-                $image = uniqid().'_'.$file->getClientOriginalName();
+                $image = uniqid() . '_' . $file->getClientOriginalName();
                 $file->move('image', $image);
             }
             $product = $this->model->create([
@@ -37,6 +44,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 'description' => $data['description'],
                 'product_image' => $image,
                 'price' => $data['price'],
+                'amount' => $data['amount']
             ]);
             $result = true;
         } catch (Exception $exception) {
@@ -50,8 +58,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     public function findProducts($id)
     {
         $result = $this->model->find($id);
-        if ($result)
-        {
+        if ($result) {
             return $result;
         }
 
@@ -62,15 +69,13 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
         $result = false;
         try {
-            if (!isset($data['product_image']))
-            {
+            if (!isset($data['product_image'])) {
                 $data['product_image'] = '';
                 $file = '';
             }
-            if ($data['product_image'])
-            {
+            if ($data['product_image']) {
                 $file = $data['product_image'];
-                $image = uniqid().'_'.$file->getClientOriginalName();
+                $image = uniqid() . '_' . $file->getClientOriginalName();
                 $file->move('image', $image);
             }
             $product = $this->model->find($id);
@@ -80,6 +85,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
                 'description' => $data['description'],
                 'product_image' => $image,
                 'price' => $data['price'],
+                'amount' => $data['amount']
             ]);
             $result = true;
         } catch (Exception $exception) {

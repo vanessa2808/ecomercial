@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('category_list', Category::all());
-        View::share('category_list', Product::all());
+        View::share('product_list', Product::all());
     }
 
 }

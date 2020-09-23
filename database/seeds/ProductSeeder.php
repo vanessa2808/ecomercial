@@ -19,6 +19,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bring you a good favor',
                 'product_image' => 'default.png',
                 'price' => '10.000',
+                'amount' => '4',
                 'created_at' => Carbon::now(),
             ],
             [
@@ -27,6 +28,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bring you a good favor',
                 'product_image' => 'default.png',
                 'price' => '20.000',
+                'amount' => '4',
                 'created_at' => Carbon::now(),
             ],
             [
@@ -35,6 +37,7 @@ class ProductSeeder extends Seeder
                 'description' => 'Bring you a good favor',
                 'product_image' => 'default.png',
                 'price' => '5.000',
+                'amount' => '4',
                 'created_at' => Carbon::now(),
             ],
         ]);

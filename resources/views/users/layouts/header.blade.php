@@ -68,7 +68,7 @@
                         <li><a href="#">Cart</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="#">@lang('messages.user_layouts.shop_detail')</a></li>
-                                <li><a href="#">@lang('messages.user_layouts.shop_cart')</a></li>
+                                <li><a href="{{route('cart.show')}}">@lang('messages.user_layouts.shop_cart')</a></li>
                                 <li><a href="#">@lang('messages.user_layouts.checkout')</a></li>
                                 <li><a href="#">@lang('messages.user_layouts.blog_detail')</a></li>
                             </ul>
@@ -82,7 +82,9 @@
                 <div class="header__cart">
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        <li><a href="{{route('cart.show')}}"><i class="fa fa-shopping-bag"></i>
+                                <span>{{ session()->has('cart') ? session()->get('cart')->totalQuantity : '0' }}</span></a>
+                        </li>
                     </ul>
                     <div class="header__cart__price">@lang('messages.user_layouts.item'): <span>$150.00</span></div>
                 </div>

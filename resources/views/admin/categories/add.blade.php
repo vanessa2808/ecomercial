@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label id="category_custom" for="exampleInputEmail1">@lang('messages.category.parent_id')</label>
                             <select  name="parent_id" id="parent_id" data-placeholder="Choose parent category"
-                                    class="form-control select2">
+                                     class="form-control select2">
                                 <option value="" label="Choose category"></option>
                                 @foreach($category_list as $category)
                                     <option value="{{$category->id}}">{{$category->category_name}}</option>
