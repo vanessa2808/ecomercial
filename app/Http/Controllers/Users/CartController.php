@@ -16,7 +16,8 @@ class CartController extends Controller
 
     public function create(Product $product)
     {
-        if (session()->has('cart')) {
+        if (session()->has('cart'))
+        {
             $cart = new Cart(session()->get('cart'));
         } else {
             $cart = new Cart();
@@ -31,7 +32,8 @@ class CartController extends Controller
     public function show()
     {
 
-        if (session()->has('cart')) {
+        if (session()->has('cart'))
+        {
             $cart = new Cart(session()->get('cart'));
         } else {
             $cart = null;
@@ -45,21 +47,14 @@ class CartController extends Controller
     {
         $cart = new Cart(session()->get('cart'));
         $cart->remove($product->id);
-
-        if ($cart->totalQuantity <= 0) {
-            session()->forget('cart');
-        } else {
-            session()->put('cart', $cart);
-        }
-
+        session()->put('cart', $cart);
         return redirect()->route('cart.show')->with('success', trans('messages.cart.success1'));
-
     }
 
     public function update(Request $request, Product $product)
     {
         $cart = new Cart(session()->get('cart'));
-        $cart->updateCart($product->id, $request->quantity);
+        $cart->updateCart($product['id'], $request->quantity);
         session()->put('cart', $cart);
         return redirect()->route('cart.show')->with('success', trans('messages.cart.success3'));
     }

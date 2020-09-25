@@ -37,7 +37,6 @@
                             </thead>
                             <tbody>
                             @if($cart)
-
                                 @foreach( $cart->items as $product)
                                     <tr>
                                         <td class="shoping__cart__item">
@@ -49,9 +48,9 @@
                                         <td>
                                             <img src="{{asset('image/'.$product['product_image'])}}" alt="">
                                         </td>
-                                        <form action="{{ route('cart.update',$product['id'])}}" method="post">
+                                        <form action="{{route('cart.update',$product['id'])}}" method="POST">
+                                            @method('PUT')
                                             @csrf
-                                            @method('put')
                                             <td class="shoping__cart__quantity">
                                                 <div class="quantity">
                                                     <div class="pro-qty">
@@ -60,7 +59,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <button type="submit" class="btn btn-secondary btn-sm">Change</button>
+                                            <button type="submit">Update</button>
                                         </form>
                                         <td class="shoping__cart__total">
                                             {{$product['price'] * $product['quantity'] }}
@@ -69,11 +68,11 @@
                                             <form action="{{ route('product.remove', $product['id'] )}}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger style1 btn-sm ml-4 float-right">@lang('messages.cart.remove')
+                                                <button type="submit" class="btn btn-danger btn-sm ml-4 float-right"
+                                                        style="margin-top: -30px;">@lang('messages.cart.remove')
                                                 </button>
                                             </form>
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -82,21 +81,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">@lang('messages.cart.continue')</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            @lang('messages.cart.update')</a>
-                    </div>
-                </div>
                 <div class="col-lg-6">
                     <div class="shoping__continue">
                         <div class="shoping__discount">
-                            <h5>@lang('messages.cart.discount')</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">@lang('messages.cart.apply')</button>
-                            </form>
+                            <h5>@lang('messages.cart.detail')</h5>
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>@lang('messages.users.user_name')</th>
+                                    <th>@lang('messages.users.address')</th>
+                                    <th>@lang('messages.users.phone')</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{Auth::user()->user_name}}</td>
+                                    <td>{{Auth::user()->address}}</td>
+                                    <td>{{Auth::user()->phone}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -107,7 +111,7 @@
                             <li>@lang('messages.cart.total_quantity') <span>{{$cart->totalQuantity}}</span></li>
                             <li>@lang('messages.cart.total') <span>{{$cart->totalPrice}} VND</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">@lang('messages.cart.checkout')</a>
+                        <a href="{{route('orders.store')}}" class="primary-btn">@lang('messages.cart.checkout')</a>
                     </div>
                 </div>
             </div>

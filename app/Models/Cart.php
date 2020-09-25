@@ -27,11 +27,12 @@ class Cart extends Model
     public function add($product)
     {
         $item = [
-            'id' =>  $product->id,
+            'id' => $product->id,
             'product_name' => $product->product_name,
+            'product_image' => $product->product_image,
             'price' => $product->price,
             'quantity' => 0,
-            'product_image' => $product->product_image,
+            'description' => $product->description,
         ];
 
         if (!array_key_exists($product->id, $this->items)) {
@@ -51,7 +52,8 @@ class Cart extends Model
 
     public function remove($id)
     {
-        if (array_key_exists($id, $this->items)) {
+        if (array_key_exists($id, $this->items))
+        {
             $this->totalQuantity -= $this->items[$id]['quantity'];
             $this->totalPrice -= $this->items[$id]['quantity'] * $this->items[$id]['price'];
             unset($this->items[$id]);
@@ -60,9 +62,9 @@ class Cart extends Model
 
     public function updateCart($id, $quantity)
     {
-        $this->totalQuantity -= $this->items[$id]['quantity'];
-        $this->totalPrice -= $this->items[$id]['price']*$this->items[$id]['quantity'];
-        $this->items['$id']['quantity'] = $quantity;
+        $this->totalQuantity -= $this->items[$id]['quantity'] ;
+        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['quantity']   ;
+        $this->items[$id]['quantity'] = $quantity;
         $this->totalQuantity += $quantity ;
         $this->totalPrice += $this->items[$id]['price'] * $quantity   ;
     }

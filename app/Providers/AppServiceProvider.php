@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Product;
+use App\Models\OrderDetail;
+use App\Models\Order;
 use App\Repositories\Eloquent\ProductRepository;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
