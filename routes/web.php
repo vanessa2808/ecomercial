@@ -4,7 +4,21 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin'], function () {
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
+Auth::routes();
+
+Route::group(['prefix'=>'admin'], function() {
     Route::get('/login', function () {
         return view('admin.login.login');
     });
@@ -32,6 +46,10 @@ Route::get('/', 'Users\ProductController@index', function () {
 
 Route::get('orders/store', 'Users\OrderController@store')->name('orders.store');
 
+Route::get('/addToCart/{product}', 'Users\CartController@create')->name('cart.add');
+
+Route::delete('/products/{product}', 'Users\CartController@destroy')->name('product.remove');
+
 Route::get('language/{language}', 'LanguageController@index')->name('language.index');
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function () {
@@ -43,5 +61,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' =
         Route::resource('products', 'ProductController')->except([
             'show'
         ]);
+
+        Route::resource('users', 'UserController');
     });
 });
