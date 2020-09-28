@@ -41,6 +41,5 @@
 <script src="user_layouts/js/mixitup.min.js"></script>
 <script src="user_layouts/js/owl.carousel.min.js"></script>
 <script src="user_layouts/js/main.js"></script>
-<script src="js/addToCart.js"></script>
 </body>
 </html>

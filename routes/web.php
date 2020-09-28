@@ -14,6 +14,12 @@ Route::get('/shopping-cart', 'Users\CartController@show')->name('cart.show');
 
 Route::resource('products', 'Users\ProductController');
 
+Route::get('/shop', function () {
+    return view('users.shop.index');
+});
+
+Route::get('/home', 'Users\ProductController@index')->name('home');
+
 Route::get('/addToCart/{product}', 'Users\CartController@create')->name('cart.add');
 
 Route::put('/products/{product}', 'Users\CartController@update')->name('cart.update');
