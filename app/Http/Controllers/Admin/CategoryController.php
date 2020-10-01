@@ -26,9 +26,9 @@ class CategoryController extends Controller
 
     public function create()
     {
-        $category = $this->categoryRepository->getCategories();
+        $category_list = $this->categoryRepository->getCategories();
 
-        return view('admin.categories.add', compact(['category']));
+        return view('admin.categories.add', compact(['category_list']));
 
     }
 
