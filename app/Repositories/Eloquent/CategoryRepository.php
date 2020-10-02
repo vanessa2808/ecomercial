@@ -50,6 +50,7 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
 
             return false;
         }
+
         return true;
     }
 

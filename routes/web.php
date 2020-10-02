@@ -25,9 +25,8 @@ Route::get('/shopping-cart', 'Users\CartController@show')->name('cart.show');
 
 Route::resource('products', 'Users\ProductController');
 
-Route::get('/shop', function () {
-    return view('users.shop.index');
-});
+Route::get('/shop', 'Users\ProductController@indexShop')->name('shop.index');
+
 
 Route::get('/home', 'Users\ProductController@index')->name('home');
 
