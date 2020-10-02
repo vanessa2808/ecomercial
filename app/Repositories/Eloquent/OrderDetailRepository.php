@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Config;
 
 class OrderDetailRepository extends BaseRepository implements OrderDetaiRepositoryInterface
 {
-
     public function getModel()
     {
         return OrderDetail::class;

@@ -26,8 +26,8 @@ class OrderController extends Controller
 
     public function index()
     {
-        $order = Order::with('user')->get();
-        return view('admin.orders.index', compact(['order']));
+        $order_list = $this->orderRepository->getOrders();
+        return view('admin.orders.index', compact(['order_list']));
 
     }
 

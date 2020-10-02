@@ -10,4 +10,6 @@ interface OrderRepositoryInterface
 
     public function deleteOrder($id);
 
+    public function createOrder(array $array);
+
 }

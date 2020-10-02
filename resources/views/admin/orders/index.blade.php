@@ -26,7 +26,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($order as $key => $order)
+                            @foreach($order_list as $key => $order)
                                 <tr>
                                     <td>{{$order->id}}</td>
                                     <td>{{$order->user->user_name}}</td>
@@ -65,4 +65,7 @@
         </div>
     </div>
 </section>
+@if($order_list->hasPages())
+    {{ $order_list->links() }}
+@endif
 @endsection

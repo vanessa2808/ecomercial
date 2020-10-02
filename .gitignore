@@ -8,6 +8,7 @@ public/adminLogin
 public/user_layouts
 public/image
 public/css
+storage/debugbar/
 .env
 .idea
 public/admin_layouts/build

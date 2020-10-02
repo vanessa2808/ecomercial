@@ -23,12 +23,22 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
+        $category_list = $this->categoryRepository->getCategories();
+        $product_list = $this->productRepository->getProducts();
         $key = $request->input('key');
-        $category_list = $this->productRepository->getProducts();
         $product_list = Product::latest()->search($key)
             ->paginate(Config::get('app.paginate'));
 
-        return view('users.products.index', compact('product_list','key', 'category_list'));
+        return view('users.products.index', compact(['product_list', 'category_list']));
+
+    }
+
+    public function indexShop(Request $request)
+    {
+        $category_list = $this->categoryRepository->getCategories();
+        $product_list = $this->productRepository->getProducts();
+
+        return view('users.shop.index', compact(['product_list', 'category_list']));
 
     }
 
