@@ -35,6 +35,7 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript" src="js/ajax_logout.js"></script>
+<script type="text/javascript" src="js/cart.js"></script>
 <script src="user_layouts/js/jquery-3.3.1.min.js"></script>
 <script src="user_layouts/js/bootstrap.min.js"></script>
 <script src="user_layouts/js/jquery.nice-select.min.js"></script>
@@ -43,5 +44,10 @@
 <script src="user_layouts/js/mixitup.min.js"></script>
 <script src="user_layouts/js/owl.carousel.min.js"></script>
 <script src="user_layouts/js/main.js"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 </body>
 </html>

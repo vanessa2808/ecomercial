@@ -63,7 +63,7 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="#">@lang('messages.user_layouts.home')</a></li>
+                        <li class="active"><a href="{{route('home')}}">@lang('messages.user_layouts.home')</a></li>
                         <li><a href="{{route('shop.index')}}">@lang('messages.user_layouts.shop')</a></li>
                         <li><a href="#">Cart</a>
                             <ul class="header__menu__dropdown">
@@ -83,10 +83,12 @@
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><a href="{{route('cart.show')}}"><i class="fa fa-shopping-bag"></i>
-                                <span>{{ session()->has('cart') ? session()->get('cart')->totalQuantity : '0' }}</span></a>
+                                <span id="total_quantity_show">{{ session()->has('cart') ? session()->get('cart')->totalQuantity : '0' }}</span></a>
                         </li>
                     </ul>
-                    <div class="header__cart__price">@lang('messages.user_layouts.item'): <span>$150.00</span></div>
+                    <div class="header__cart__price">@lang('messages.user_layouts.item'): <span
+                            id="header__cart__price">${{number_format(session()->has('cart') ? session()->get('cart')->totalPrice : '0' )}}</span>
+                    </div>
                 </div>
             </div>
         </div>

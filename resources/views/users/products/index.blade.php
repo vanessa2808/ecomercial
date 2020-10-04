@@ -121,8 +121,8 @@
                                 <ul class="featured__item__pic__hover">
                                     <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="{{ route('cart.add',$product)}}"><i
-                                                class="fa fa-shopping-cart"></i></a></li>
+                                    <li><button id="add_button" onclick="addToCart({{$product->id}})"><i
+                                                class="fa fa-shopping-cart"></i></button></li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">
@@ -135,10 +135,11 @@
                 @endforeach
                 <div>
                     @if($product_list->hasPages())
-                        {{ $product_list->appends(['key' => $key])->links() }}
+                        {{ $product_list->links() }}
                     @endif
                 </div>
             </div>
         </div>
+
     </section>
 @endsection

@@ -25,7 +25,7 @@ class CartController extends Controller
         $cart->add($product);
         session()->put('cart', $cart);
 
-        return redirect()->route('cart.show')->with('success', trans('messages.cart.success'));
+        return response()->json(["totalPrice"=> $cart->totalPrice,"totalQuantity"=> $cart->totalQuantity]);
 
     }
 
@@ -48,7 +48,7 @@ class CartController extends Controller
         $cart = new Cart(session()->get('cart'));
         $cart->remove($product->id);
         session()->put('cart', $cart);
-        return redirect()->route('cart.show')->with('success', trans('messages.cart.success1'));
+        return response()->json(["totalPrice"=> $cart->totalPrice,"totalQuantity"=> $cart->totalQuantity]);
     }
 
     public function update(Request $request, Product $product)
@@ -56,7 +56,7 @@ class CartController extends Controller
         $cart = new Cart(session()->get('cart'));
         $cart->updateCart($product['id'], $request->quantity);
         session()->put('cart', $cart);
-        return redirect()->route('cart.show')->with('success', trans('messages.cart.success3'));
+        return response()->json(["totalPrice"=> $cart->totalPrice,"totalQuantity"=> $cart->totalQuantity]);
     }
 
 }
