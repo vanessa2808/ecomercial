@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="shoping__cart__table">
+                    <div class="shoping__cart__table" id="shoping__cart__table">
                         <table>
                             <thead>
                             <tr>
@@ -35,10 +35,10 @@
                                 <th></th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="table-container">
                             @if($cart)
                                 @foreach( $cart->items as $product)
-                                    <tr>
+                                    <tr id="row-container-{{$product['id']}}">
                                         <td class="shoping__cart__item">
                                             <h5>{{ $product['product_name'] }}</h5>
                                         </td>
@@ -48,30 +48,25 @@
                                         <td>
                                             <img src="{{asset('image/'.$product['product_image'])}}" alt="">
                                         </td>
-                                        <form action="{{route('cart.update',$product['id'])}}" method="POST">
-                                            @method('PUT')
-                                            @csrf
-                                            <td class="shoping__cart__quantity">
-                                                <div class="quantity">
-                                                    <div class="pro-qty">
-                                                        <input id="quantity" name="quantity" type="text"
-                                                               value="{{ $product['quantity']}}">
-                                                    </div>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    <span class="dec qtybtn"
+                                                          onclick="onCartItemQuantityChanged('{{ $product['id']}}',false)">-</span>
+                                                    <input id="quantity-{{$product['id']}}" name="quantity" type="text"
+                                                           value="{{ $product['quantity']}}">
+                                                    <span class="inc qtybtn" onclick="onCartItemQuantityChanged('{{$product['id']}}',true)">+</span>
                                                 </div>
-                                            </td>
-                                            <button type="submit">Update</button>
-                                        </form>
-                                        <td class="shoping__cart__total">
+                                            </div>
+                                        </td>
+                                        <td class="shoping__cart__total" id="shoping__cart__total">
                                             {{$product['price'] * $product['quantity'] }}
                                         </td>
                                         <td class="shoping__cart__item__close">
-                                            <form action="{{ route('product.remove', $product['id'] )}}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-danger btn-sm ml-4 float-right"
-                                                        style="margin-top: -30px;">@lang('messages.cart.remove')
-                                                </button>
-                                            </form>
+                                            <button id="add_button_delete"
+                                                    onclick="removeProductCart({{$product['id']}})"
+                                                    class="btn btn-danger btn-sm ml-4 float-right">@lang('messages.cart.remove')
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -108,8 +103,8 @@
                     <div class="shoping__checkout">
                         <h5></h5>
                         <ul>
-                            <li>@lang('messages.cart.total_quantity') <span>{{$cart->totalQuantity}}</span></li>
-                            <li>@lang('messages.cart.total') <span>{{$cart->totalPrice}} VND</span></li>
+                            <li>@lang('messages.cart.total_quantity') <span id="show_quantity">{{$cart->totalQuantity}}</span></li>
+                            <li>@lang('messages.cart.total') <span id="show_price">{{$cart->totalPrice}} VND</span></li>
                         </ul>
                         <a href="{{route('orders.store')}}" class="primary-btn">@lang('messages.cart.checkout')</a>
                     </div>

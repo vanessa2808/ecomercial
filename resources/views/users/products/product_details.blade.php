@@ -58,7 +58,8 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="{{ route('cart.add',$product)}}"  class="btn btn-success pull-right btn_cart">Add to Cart</a>                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <button id="add_button" onclick="addToCart({{$product->id}})"
+                                class="btn btn-success">Add to cart</button>
                         <ul>
                             <li><b>@lang('messages.cart.availability')</b> <span>{{$product->amount}}</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
