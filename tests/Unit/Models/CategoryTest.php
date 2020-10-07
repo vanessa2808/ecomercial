@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\App\Models;
+namespace Tests\Unit\Models;
 
 use App\Models\Category;
 use App\Models\Comment;

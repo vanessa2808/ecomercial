@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\app\Http\Controllers\Users;
+namespace Tests\Feature\Http\Controllers\Users;
 
 use App\Models\Category;
 use App\Models\Order;

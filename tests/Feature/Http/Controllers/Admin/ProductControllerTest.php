@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\app\Http\Controllers\Admin;
+namespace Tests\Feature\Http\Controllers\Admin;
 
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Requests\ProductRequest;
