@@ -11,7 +11,7 @@ function addToCart(id)
     }).done(function (response)
     {
         renderCart(response.totalQuantity);
-        renderMoney(response.totalPrice.toFixed(3));
+        renderMoney( "$"+response.totalPrice.toFixed(3));
         alertify.success('Product has been added to cart');
     });
 }
@@ -50,7 +50,7 @@ function updateProductCart(id, quantity) {
     }).done(function (response)
     {
         renderCart(response.totalQuantity);
-        renderMoney(response.totalPrice.toFixed(3));
+        renderMoney( "$"+response.totalPrice.toFixed(3));
         alertify.success('Product has been updated');
     });
 }
@@ -83,4 +83,8 @@ function onCartItemQuantityChanged(id, isIncrease)
     }
     updateProductCart(id, newVal);
     $('#quantity-'+id).val(newVal);
+    var constPrice = $('#price-'+id).val();
+    var totalPriceForItems = (Number(constPrice) * Number(newVal)).toFixed(3);
+    $('#show_total_quantity_for_each_items-'+id).text(totalPriceForItems);
+
 }

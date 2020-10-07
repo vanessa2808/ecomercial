@@ -4,7 +4,7 @@
     @if( session()->has('success'))
         <div class="alert alert-success">{{ session()->get('success') }}</div>
     @endif
-    <section class="breadcrumb-section set-bg" data-setbg="user_layouts/img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg"data-setbg="user_layouts/img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -43,7 +43,8 @@
                                             <h5>{{ $product['product_name'] }}</h5>
                                         </td>
                                         <td class="shoping__cart__price">
-                                            {{ $product['price'] }}
+                                            <input class="cart_price_key" disabled id="price-{{$product['id']}}" name="price" type="text"
+                                                   value="{{money_format('%.3n',$product['price'])}}">
                                         </td>
                                         <td>
                                             <img src="{{asset('image/'.$product['product_image'])}}" alt="">
@@ -58,9 +59,9 @@
                                                     <span class="inc qtybtn" onclick="onCartItemQuantityChanged('{{$product['id']}}',true)">+</span>
                                                 </div>
                                             </div>
-                                        </td>
-                                        <td class="shoping__cart__total" id="shoping__cart__total">
-                                            {{$product['price'] * $product['quantity'] }}
+                                        </td>"
+                                        <td class="shoping__cart__total" id="show_total_quantity_for_each_items-{{$product['id']}}">
+                                           {{money_format('%.3n',$product['price'] * $product['quantity'])}}
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <button id="add_button_delete"
@@ -104,7 +105,7 @@
                         <h5></h5>
                         <ul>
                             <li>@lang('messages.cart.total_quantity') <span id="show_quantity">{{$cart->totalQuantity}}</span></li>
-                            <li>@lang('messages.cart.total') <span id="show_price">{{$cart->totalPrice}} VND</span></li>
+                            <li>@lang('messages.cart.total') <span id="show_price">${{money_format('%.3n',$cart->totalPrice)}}</span></li>
                         </ul>
                         <a href="{{route('orders.store')}}" class="primary-btn">@lang('messages.cart.checkout')</a>
                     </div>

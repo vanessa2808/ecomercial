@@ -185,6 +185,7 @@ return [
         'edit' => 'Edit',
         'delete' => 'Delete',
         'show_detail' => 'Detail',
+        'order_detail' => 'View order Detail',
         'id' => 'ID',
         'product_name' => 'Product Name',
         'order_id' => 'Order ID',
@@ -192,6 +193,8 @@ return [
     ],
     'status' => [
         'success' => 'Status was changed',
-        'fail' => 'Order was not existed'
+        'fail' => 'Order was not existed',
+        'approved' => 'Approved Order',
+        'unapproved' => 'Not Approve Order',
     ]
 ];
