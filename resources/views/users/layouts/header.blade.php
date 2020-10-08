@@ -73,13 +73,13 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="{{route('home')}}">@lang('messages.user_layouts.home')</a></li>
-                        <li><a href="{{route('shop.index')}}">@lang('messages.user_layouts.shop')</a></li>
+                        <li class="active"><a href="{{ route('home')}}">@lang('messages.user_layouts.home')</a></li>
+                        <li><a href="{{ route('shop.index')}}">@lang('messages.user_layouts.shop')</a></li>
                         <li><a href="#">Cart</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="{{route('orders.index')}}">@lang('messages.user_layouts.shop_detail')</a>
+                                <li><a href="{{ route('orders.index')}}">@lang('messages.user_layouts.shop_detail')</a>
                                 </li>
-                                <li><a href="{{route('cart.show')}}">@lang('messages.user_layouts.shop_cart')</a></li>
+                                <li><a href="{{ route('cart.show')}}">@lang('messages.user_layouts.shop_cart')</a></li>
                                 <li><a href="#">@lang('messages.user_layouts.checkout')</a></li>
                                 <li><a href="#">@lang('messages.user_layouts.blog_detail')</a></li>
                             </ul>
@@ -92,8 +92,8 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="{{route('cart.show')}}"><i class="fa fa-shopping-bag"></i>
+                        <li><a href="{{ route('favorite.index')}}"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href="{{ route('cart.show')}}"><i class="fa fa-shopping-bag"></i>
                                 <span
                                     id="total_quantity_show">{{ session()->has('cart') ? session()->get('cart')->totalQuantity : '0' }}</span></a>
                         </li>
