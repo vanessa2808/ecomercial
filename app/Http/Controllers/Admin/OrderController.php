@@ -14,14 +14,11 @@ use App\Models\User;
 class OrderController extends Controller
 {
     private $orderRepository;
-    private $userRepository;
-    private $orderDetailRepository;
 
-    public function __construct(OrderRepositoryInterface $orderRepository, UserRepositoryInterface $userRepository, OrderDetaiRepositoryInterface $orderDetailRepository)
+    public function __construct(OrderRepositoryInterface $orderRepository)
     {
+        $this->middleware('auth');
         $this->orderRepository = $orderRepository;
-        $this->userRepository = $userRepository;
-        $this->orderDetailRepository = $orderDetailRepository;
     }
 
     public function index()

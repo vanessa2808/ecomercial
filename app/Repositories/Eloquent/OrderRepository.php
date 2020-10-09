@@ -27,7 +27,9 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
     public function findOrders($id)
     {
-        $result = $this->model->find($id);
+        $result = $this->model->with(['order_details' => function($query) {
+            return $query->with('product');
+        }])->find($id);
         if ($result) {
             return $result;
         }
@@ -48,7 +50,8 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 
     public function createOrder(array $data)
     {
-        if (!Session::has('cart')) {
+        if (!Session::has('cart'))
+        {
             return redirect()->route('cart.show');
         }
         $oldCart = Session::get('cart');

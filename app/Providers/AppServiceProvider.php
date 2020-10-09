@@ -3,16 +3,15 @@
 namespace App\Providers;
 
 use App\Models\Product;
+use Carbon\Carbon;
 use App\Models\OrderDetail;
 use App\Models\Order;
 use App\Repositories\Eloquent\ProductRepository;
 use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\Eloquent\OrderRepository;
-use App\Repositories\Eloquent\OrderDetailRepository;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
-use App\Repositories\Interfaces\OrderDetaiRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\User;
@@ -33,7 +32,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
-        $this->app->bind(OrderDetaiRepositoryInterface::class, OrderDetailRepository::class);
     }
 
     /**
@@ -43,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        setlocale(LC_TIME, config('app.locale'));
     }
 
 }

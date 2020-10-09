@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
+use App\Repositories\Interfaces\OrderDetaiRepositoryInterface;
 
 
 class OrderController extends Controller
@@ -28,7 +29,8 @@ class OrderController extends Controller
 
     public function index()
     {
-        return view('users.orders.index');
+        $order_list = $this->orderRepository->getOrders();
+        return view('users.orders.index', compact(['order_list']));
     }
 
     public function create()
@@ -38,12 +40,31 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        if ($this->orderRepository->createOrder($request->all())) {
+        if ($this->orderRepository->createOrder($request->all()))
+        {
+
             return redirect()->back()->with('success', trans('messages.order.success'));
+
         } else {
 
-            return redirect()->route('cart.show')->with('fail', trans('messages.order.fail'));
+            return redirect()->route('cart.index')->with('fail', trans('messages.order.fail'));
+
         }
+    }
+
+    public function show($id)
+    {
+        $order = $this->orderRepository->findOrders($id);
+        if((!$order) || ($order->user_id != Auth::user()->id))
+        {
+
+            return redirect()->back();
+
+        }
+
+        return view('users.orders.detail', [
+            'order' => $order,
+        ]);
     }
 
     public function edit($id)

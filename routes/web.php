@@ -27,6 +27,7 @@ Route::resource('products', 'Users\ProductController');
 
 Route::get('/shop', 'Users\ProductController@indexShop')->name('shop.index');
 
+Route::get('orders/order_history', 'Users\OrderController@index')->name('orders.index');
 
 Route::get('/home', 'Users\ProductController@index')->name('home');
 
@@ -41,6 +42,8 @@ Route::get('/', 'Users\ProductController@index', function () {
 });
 
 Route::get('orders/store', 'Users\OrderController@store')->name('orders.store');
+
+Route::get('orders/{id}', 'Users\OrderController@show')->name('users.orders.show');
 
 Route::get('/addToCart/{product}', 'Users\CartController@create')->name('cart.add');
 

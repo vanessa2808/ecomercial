@@ -45,6 +45,16 @@
                                           style="display: none;">
                                         @csrf
                                     </form>
+                                    <li>
+                                        <a href="orders/order_history">history
+                                        </a>
+                                    </li>
+                                    @can('isAdmin', \Auth::user())
+                                        <li>
+                                            <a href="{{route('users.index')}}">manage
+                                            </a>
+                                        </li>
+                                    @endcan
                                 </ul>
                             </div>
                         @endguest
@@ -67,7 +77,8 @@
                         <li><a href="{{route('shop.index')}}">@lang('messages.user_layouts.shop')</a></li>
                         <li><a href="#">Cart</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="#">@lang('messages.user_layouts.shop_detail')</a></li>
+                                <li><a href="{{route('orders.index')}}">@lang('messages.user_layouts.shop_detail')</a>
+                                </li>
                                 <li><a href="{{route('cart.show')}}">@lang('messages.user_layouts.shop_cart')</a></li>
                                 <li><a href="#">@lang('messages.user_layouts.checkout')</a></li>
                                 <li><a href="#">@lang('messages.user_layouts.blog_detail')</a></li>
@@ -83,7 +94,8 @@
                     <ul>
                         <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                         <li><a href="{{route('cart.show')}}"><i class="fa fa-shopping-bag"></i>
-                                <span id="total_quantity_show">{{ session()->has('cart') ? session()->get('cart')->totalQuantity : '0' }}</span></a>
+                                <span
+                                    id="total_quantity_show">{{ session()->has('cart') ? session()->get('cart')->totalQuantity : '0' }}</span></a>
                         </li>
                     </ul>
                     <div class="header__cart__price">@lang('messages.user_layouts.item'): <span
