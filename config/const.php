@@ -12,6 +12,10 @@ return [
     'status' => [
         'approved' => 1,
         'unapproved' => 0,
+    ],
+    'default' => [
+        'default_phone_number' => '0376381262',
+        'default_address' => 'Quang Nam',
     ]
 ];
 

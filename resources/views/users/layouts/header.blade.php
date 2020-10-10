@@ -13,8 +13,8 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header__top__right">
                         <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-google"></i></a>
+                            <a href="{{ route('login.social', ['provider' => 'facebook']) }}"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ route('login.social', ['provider' => 'google']) }}"><i class="fa fa-google"></i></a>
                         </div>
                         <div class="header__top__right__language">
                             <img src="user_layouts/img/language.png" alt="">

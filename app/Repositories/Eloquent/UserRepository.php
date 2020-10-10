@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
@@ -72,6 +73,25 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             return true;
         }
         return false;
+    }
+
+    public function getUserSocialNetWork($getInfo, $provider)
+    {
+        $user = User::where('provider_id', $getInfo->id)->first();
+
+        if (!$user) {
+            $user = User::create([
+                'user_name' => $getInfo->name,
+                'role_id' => \config('const.role.user'),
+                'password' => Hash::make('123456789'),
+                'phone' => config('const.default.default_phone_number'),
+                'provider' => $provider,
+                'provider_id' => $getInfo->id,
+                'address' => config('const.default.default_address'),
+                'email' => $getInfo->email,
+            ]);
+        }
+        return $user;
     }
 
 }
