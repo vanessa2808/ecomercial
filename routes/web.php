@@ -51,6 +51,10 @@ Route::delete('/products/{product}', 'Users\CartController@destroy')->name('prod
 
 Route::get('language/{language}', 'LanguageController@index')->name('language.index');
 
+Route::get('/auth/redirect/{provider}', 'Users\SocialController@redirect')->name('login.social');
+
+Route::get('/callback/{provider}', 'Users\SocialController@callback')->name('login.callback');
+
 Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::resource('categories', 'CategoryController')->except([
