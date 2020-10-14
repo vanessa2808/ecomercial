@@ -47,6 +47,12 @@ Route::get('orders/{id}', 'Users\OrderController@show')->name('users.orders.show
 
 Route::get('/addToCart/{product}', 'Users\CartController@create')->name('cart.add');
 
+Route::post('/addfavourite/{product}', 'Users\FavouriteController@update');
+
+Route::get('/addfavourite/{product}', 'Users\FavouriteController@destroy');
+
+Route::get('/favorite/index', 'Users\FavouriteController@index')->name('favorite.index');
+
 Route::delete('/products/{product}', 'Users\CartController@destroy')->name('product.remove');
 
 Route::get('language/{language}', 'LanguageController@index')->name('language.index');

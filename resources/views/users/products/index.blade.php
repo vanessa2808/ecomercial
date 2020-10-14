@@ -119,10 +119,29 @@
                             <div class="featured__item__pic set-bg"
                                  data-setbg="{{ asset('image/'.$product->product_image)}}">
                                 <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li>
+                                        <button id="deletefavourite-{{$product->id}}"
+                                                onClick="deleteFavoriteProduct({{$product->id}})"
+                                                name="deletefavourite"
+                                                class="btn btn-lg"
+                                                style="{{ $product->isFavourited ? '' : 'display: none;' }}">
+                                            <i class="fa fa-heartbeat"></i>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button id="addFavoriteProduct-{{$product->id}}"
+                                                onClick="addFavoriteProduct({{$product->id}})"
+                                                name="addfavourite"
+                                                class="btn btn-lg"
+                                                style="{{ $product->isFavourited ? 'display: none;' : '' }}">
+                                            <i class="fa fa-heart"></i>
+                                        </button>
+                                    </li>
                                     <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><button id="add_button" onclick="addToCart({{$product->id}})"><i
-                                                class="fa fa-shopping-cart"></i></button></li>
+                                    <li>
+                                        <button id="add_button" onclick="addToCart({{$product->id}})"><i
+                                                class="fa fa-shopping-cart"></i></button>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="featured__item__text">

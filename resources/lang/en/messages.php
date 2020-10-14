@@ -190,6 +190,7 @@ return [
         'product_name' => 'Product Name',
         'order_id' => 'Order ID',
         'quantity' => 'Quantity',
+        'favorite' => 'Your Favorite Product'
     ],
     'status' => [
         'success' => 'Status was changed',

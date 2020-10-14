@@ -33,6 +33,7 @@
     </div>
 </section>
 
+<script src="{{ mix('/js/favorite_product.js') }}"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript" src="js/ajax_logout.js"></script>
 <script type="text/javascript" src="js/cart.js"></script>
