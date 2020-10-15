@@ -38,8 +38,7 @@ class ListProductTest extends TestCase
         $productRepo = new Product($product);
         $productRepo->product_cate([$category->id]);
 
-        $this
-            ->get(route('admin.categories.index'))
+        $this->get(route('admin.categories.index'))
             ->assertStatus(200)
             ->assertSee($category->category_name)
             ->assertSee($category->parent_id)

@@ -3,24 +3,34 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Comment;
-use App\Models\User;
 use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\User;
 use Tests\TestCase;
 
 class CommentTest extends TestCase
 {
-    use RefreshDatabase;
     protected $comment;
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
         $this->assertTrue(true);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->comment = new Comment();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        unset($this->comment);
+    }
+
+    public function test_table_name()
+    {
+        $this->assertEquals('comments', $this->comment->getTable());
     }
 
     public function comments_database_has_expected_columns()
@@ -37,29 +47,39 @@ class CommentTest extends TestCase
         );
     }
 
-    public function test_contains_valid_fillable_properties()
+    public function test_fillable()
     {
-        $comment = new Comment();
         $this->assertEquals([
             'user_id',
             'product_id',
             'comment',
             'rate',
-        ], $comment->getFillable());
+        ], $this->comment->getFillable());
     }
 
-    public function a_comment_belongs_to_user()
+    public function test_key_name()
     {
-        $comment = new Comment();
-        $user_id = $comment->user();
-        $this->assertBelongsToRelation($user_id, $comment, new Comment());
+        $this->assertEquals('id', $this->comment->getKeyName());
     }
 
-    public function a_comment_belongs_to_product()
+    public function test_user_relation()
     {
-        $comment = new Comment();
-        $product_id = $comment->user();
-        $this->assertBelongsToRelation($product_id, $comment, new Comment());
+        $this->belongsTo_relation_test(
+            User::class,
+            'user_id',
+            'id',
+            $this->comment->user()
+        );
+    }
+
+    public function test_product_relation()
+    {
+        $this->belongsTo_relation_test(
+            Product::class,
+            'product_id',
+            'id',
+            $this->comment->product()
+        );
     }
 
 }
