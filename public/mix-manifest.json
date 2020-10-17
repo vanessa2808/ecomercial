@@ -1,5 +1,9 @@
 {
+    "/js/ajax_logout.js": "/js/ajax_logout.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/favorite_product.js": "/js/favorite_product.js"
+    "/css/category.css": "/css/category.css",
+    "/js/favorite_product.js": "/js/favorite_product.js",
+    "/js/cart.js": "/js/cart.js",
+    "/js/status_button.js": "/js/status_button.js"
 }

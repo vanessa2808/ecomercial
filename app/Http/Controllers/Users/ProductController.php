@@ -58,4 +58,16 @@ class ProductController extends Controller
         ]);
     }
 
+    public function indexFilter(Request $request)
+    {
+        $category_list = $this->categoryRepository->getCategories();
+        $product_list = $this->productRepository->getProducts();
+        $key = $request->input('key');
+        $product_list = Product::latest()->search($key)
+            ->paginate(Config::get('app.paginate'));
+
+        return view('users.shop.index', compact(['product_list', 'category_list']));
+
+    }
+
 }

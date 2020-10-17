@@ -20,9 +20,8 @@
                             <select data-slider-value="{{$product->category->name}}" name="category_id" id="category_id" data-placeholder="Choose category id"
                                     class="form-control select2">
                                 <option value="#" label="Choose category name"></option>
-                                @foreach($category_list as $category)
-                                    <option style="color: white"
-                                            value="{{$category->id}}">{{$category->category_name}}</option>
+                                @foreach($category_list as $key => $category)
+                                    <option id="colorCate" value="{{$category->id}}">{{$category->category_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -60,6 +59,13 @@
                                 <label for="exampleInputEmail1">@lang('messages.product.price')</label>
                                 <input type="text" class="form-control" id='price' name="price"
                                        placeholder="Enter category name" value="{{$product->price}}" required>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">@lang('messages.product.amount')</label>
+                                <input type="number" class="form-control" value="{{$product->amount}}" id='amount' name="amount"
+                                       placeholder="Enter amount" required>
                             </div>
                         </div>
                         <div class="card-footer">

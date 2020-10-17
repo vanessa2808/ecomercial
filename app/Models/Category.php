@@ -34,4 +34,9 @@ class Category extends Model
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
+    public function filterCategory($query, $key)
+    {
+        return $query->where('category_name', 'like', '%' . $key . '%');
+    }
+
 }

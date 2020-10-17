@@ -30,7 +30,7 @@
 </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="js/status_button.js"></script>
+<script src="{{ mix('/js/status_button.js') }}"></script>
 <script src="admin_layouts/plugins/jquery/jquery.min.js"></script>
 <script src="admin_layouts/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="admin_layouts/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>

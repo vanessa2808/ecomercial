@@ -21,6 +21,7 @@
     max-width: 50px;
     max-height: 50px;
 }
+
 #styleImage {
     width: auto;
     height: auto;
@@ -35,16 +36,26 @@
     margin-left: 20px;
 }
 
-#styleImage3{
+#styleImage3 {
     width: 200px;
 }
-#style1{
+
+#style1 {
     margin-top: -30px
 }
+
 #add_button_delete {
     margin-top: -30px
 }
+
 .cart_price_key {
     width: 60px;
     border: none;
+}
+
+#colorCate {
+    color: white;
+}
+.deletefavorite {
+    color: #ad1707;
 }

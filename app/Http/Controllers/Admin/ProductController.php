@@ -57,8 +57,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = $this->productRepository->findProducts($id);
+        $category_list = $this->categoryRepository->getCategories();
 
-        return view('admin.products.edit', compact('product'));
+        return view('admin.products.edit', compact(['product', 'category_list']));
     }
 
 

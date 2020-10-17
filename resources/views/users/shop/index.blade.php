@@ -24,7 +24,7 @@
                             <h4>Department</h4>
                             <ul>
                                 @foreach($category_list as $key => $category)
-                                    <li><a href="#">{{$category->category_name}}</a></li>
+                                    <li><a name="key" href="/category/{{$category->category_name}}">{{$category->category_name}}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -217,13 +217,19 @@
                                     <span>Sort By</span>
                                     <select>
                                         <option value="0">Default</option>
-                                        <option value="0">Default</option>
+                                        <option value="1">Default</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
+                                <div class="hero__search__form">
+                                    <form action="{{route('home')}}" method="GET">
+                                        <div class="hero__search__categories">
+                                            <span class="arrow_carrot-down"></span>
+                                        </div>
+                                        <input type="text" name="key" placeholder="@lang('messages.user_layouts.need')">
+                                        <button type="submit" class="site-btn">@lang('messages.user_layouts.search')</button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-3">
@@ -253,11 +259,10 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    <div>
+                        @if($product_list->hasPages())
+                            {{ $product_list->links() }}
+                        @endif
                     </div>
                 </div>
             </div>

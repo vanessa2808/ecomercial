@@ -8,7 +8,7 @@ function addFavoriteProduct(productId) {
 
     $.ajax({
         type: 'post',
-        url: 'addfavourite/' + product_id,
+        url: 'addFavourite/' + product_id,
         data: {
             'product_id': productId,
         },
@@ -32,8 +32,8 @@ function deleteFavoriteProduct(productId) {
     var product_id = productId;
 
     $.ajax({
-        type: 'get',
-        url: 'addfavourite/' + product_id,
+        method: 'DELETE',
+        url: 'deleteFavourite/' + product_id,
         data: {
             'product_id': productId,
         },

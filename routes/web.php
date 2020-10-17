@@ -47,9 +47,9 @@ Route::get('orders/{id}', 'Users\OrderController@show')->name('users.orders.show
 
 Route::get('/addToCart/{product}', 'Users\CartController@create')->name('cart.add');
 
-Route::post('/addfavourite/{product}', 'Users\FavouriteController@update');
+Route::post('/addFavourite/{product}', 'Users\FavouriteController@update');
 
-Route::get('/addfavourite/{product}', 'Users\FavouriteController@destroy');
+Route::delete('/deleteFavourite/{product}', 'Users\FavouriteController@destroy');
 
 Route::get('/favorite/index', 'Users\FavouriteController@index')->name('favorite.index');
 
@@ -60,6 +60,8 @@ Route::get('language/{language}', 'LanguageController@index')->name('language.in
 Route::get('/auth/redirect/{provider}', 'Users\SocialController@redirect')->name('login.social');
 
 Route::get('/callback/{provider}', 'Users\SocialController@callback')->name('login.callback');
+
+Route::get('/category/{category}', 'Users\ProductController@indexFilter')->name('category.category_filter');
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function () {
     Route::group(['prefix' => 'admin'], function () {
@@ -80,6 +82,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' =
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function () {
     Route::group(['prefix' => 'api'], function () {
-        Route::patch('/changeStatus', 'OrderController@changeStatus')->name('change.status');
+        Route::get('/changeStatus', 'OrderController@changeStatus')->name('change.status');
     });
 });

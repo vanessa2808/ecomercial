@@ -60,10 +60,10 @@ class OrderController extends Controller
         if ($order) {
             $order->status = $request->status;
             $order->save();
-            return redirect()->with(['success' => @trans('messages.status.success')]);
+            return redirect()->back()->with('Success', trans('messages.status.success'));
         } else
         {
-            return redirect()->with(['fail' => @trans('messages.status.fail')]);
+            return redirect()->back()->with('Fail', trans('messages.status.fail'));
         }
     }
 

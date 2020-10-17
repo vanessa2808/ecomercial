@@ -25,8 +25,7 @@
                                     @lang('messages.user_layouts.category')
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" name="key" placeholder="@lang('messages.user_layouts.need')"
-                                       value="{{isset($key) ? $key: ''}}">
+                                <input type="text" name="key" placeholder="@lang('messages.user_layouts.need')">
                                 <button type="submit" class="site-btn">@lang('messages.user_layouts.search')</button>
                             </form>
                         </div>
@@ -123,8 +122,8 @@
                                         <button id="deletefavourite-{{$product->id}}"
                                                 onClick="deleteFavoriteProduct({{$product->id}})"
                                                 name="deletefavourite"
-                                                class="btn btn-lg"
-                                                style="{{ $product->isFavourited ? '' : 'display: none;' }}">
+                                                class="btn btn-lg deletefavorite"
+                                                style=" {{ $product->isFavourited ? '' : 'display: none;' }}">
                                             <i class="fa fa-heartbeat"></i>
                                         </button>
                                     </li>
