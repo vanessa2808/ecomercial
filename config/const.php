@@ -19,6 +19,9 @@ return [
     ],
     'admin_email' => [
         'admin_mail' => 'admin_tasty_recipe@yopmail.com'
+    ],
+    'pathDefaultImage' => [
+        'image' => 'image/ava.jpg'
     ]
 ];
 

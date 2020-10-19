@@ -30,5 +30,6 @@ class MailTest extends TestCase
         SendEmailToAdmin::dispatch('yenrion9941@gmail.com', [], 200);
 
         Queue::assertPushed(SendEmailToAdmin::class);
+
     }
 }

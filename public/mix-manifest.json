@@ -5,5 +5,6 @@
     "/css/category.css": "/css/category.css",
     "/js/favorite_product.js": "/js/favorite_product.js",
     "/js/cart.js": "/js/cart.js",
-    "/js/status_button.js": "/js/status_button.js"
+    "/js/status_button.js": "/js/status_button.js",
+    "/js/notification.js": "/js/notification.js"
 }

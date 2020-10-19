@@ -204,6 +204,9 @@ return [
         'hello' => 'Hello',
         'sub_new' => 'You Have New Order!',
         'check' => 'Check',
-        'detail_new' => 'You have a new order, please check!'
+        'detail_new' => 'You have a new order, please check!',
+        'message' => 'Một đơn hàng vừa được tạo',
+        'order' => 'vừa đặt một đơn hàng. Click để xem chi tiết',
+        'view' => 'View All'
     ]
 ];
