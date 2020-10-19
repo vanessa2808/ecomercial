@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Jobs\SendEmailToAdmin;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Mockery\Exception;
+use Illuminate\Http\Request;
+use Mail;
 
 class OrderRepository extends BaseRepository implements OrderRepositoryInterface
 {

@@ -26,7 +26,10 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "laravel-echo": "^1.9.0",
+    "pusher-js": "^7.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vanessa2808/dn_oe36_fdf.git"
