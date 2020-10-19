@@ -35,8 +35,8 @@
 
 <script src="{{ mix('/js/favorite_product.js') }}"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script type="text/javascript" src="js/ajax_logout.js"></script>
-<script type="text/javascript" src="js/cart.js"></script>
+<script type="text/javascript" src="{{ mix('/js/ajax_logout.js') }}"></script>
+<script type="text/javascript" src="{{ mix('/js/cart.js') }}"></script>
 <script src="user_layouts/js/jquery-3.3.1.min.js"></script>
 <script src="user_layouts/js/bootstrap.min.js"></script>
 <script src="user_layouts/js/jquery.nice-select.min.js"></script>

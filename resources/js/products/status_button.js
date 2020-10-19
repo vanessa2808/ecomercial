@@ -14,12 +14,11 @@ function changeStatus() {
         var status = $(this).prop('checked') == true ? 1 : 0;
         var order_id = $(this).data('id');
         $.ajax({
-            type: 'patch',
-            dataType: 'json',
+            type: 'get',
             url: "api/changeStatus",
             data: {'status': status, 'order_id': order_id},
             success: function (data) {
-                alert('success');
+                alertify.success('changed status successfully');
                 $('#message').html('<p class="alert alert-danger>' + data.success + '</p>');
             }
         });
