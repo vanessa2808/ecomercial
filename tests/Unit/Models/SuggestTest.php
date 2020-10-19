@@ -3,31 +3,47 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Favorite;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
 use App\Models\Suggest;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class SuggestTest extends TestCase
 {
-    use RefreshDatabase;
     protected $suggest;
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
         $this->assertTrue(true);
     }
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->suggest = new Suggest();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        unset($this->suggest);
+    }
+
+    public function test_table_name()
+    {
+        $this->assertEquals('suggests', $this->suggest->getTable());
+    }
+
     public function suggests_database_has_expected_columns()
     {
         $this->assertTrue(
-            Schema::hasColumns('suggests', [
+            Schema::hasColumns('products', [
                 'id',
+                'user_id',
                 'product_name',
                 'product_image',
                 'description',
@@ -39,9 +55,8 @@ class SuggestTest extends TestCase
         );
     }
 
-    public function test_contains_valid_fillable_properties()
+    public function test_fillable()
     {
-        $suggest = new Suggest();
         $this->assertEquals([
             'user_id',
             'product_name',
@@ -50,21 +65,32 @@ class SuggestTest extends TestCase
             'reason',
             'category_id',
             'status',
-        ], $suggest->getFillable());
+        ], $this->suggest->getFillable());
     }
 
-    public function a_suggest_belongs_to_user()
+    public function test_key_name()
     {
-        $suggest = new Suggest();
-        $user_id = $suggest->user();
-        $this->assertBelongsToRelation($user_id, $suggest, new Suggest());
+        $this->assertEquals('id', $this->suggest->getKeyName());
     }
 
-    public function a_comment_belongs_to_category()
+    public function test_user_relation()
     {
-        $suggest = new Comment();
-        $category_id = $suggest->user();
-        $this->assertBelongsToRelation($category_id, $suggest, new Suggest());
+        $this->belongsTo_relation_test(
+            User::class,
+            'user_id',
+            'id',
+            $this->suggest->user()
+        );
+    }
+
+    public function test_category_relation()
+    {
+        $this->belongsTo_relation_test(
+            Category::class,
+            'category_id',
+            'id',
+            $this->suggest->category()
+        );
     }
 
 }

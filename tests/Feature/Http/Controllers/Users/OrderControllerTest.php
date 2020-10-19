@@ -32,6 +32,13 @@ class OrderControllerTest extends TestCase
         parent::setUp();
     }
 
+    public function tearDown(): void
+    {
+        unset($this->orderRepositoryMock);
+        m::close();
+        parent::tearDown();
+    }
+
     public function test_it_stores_new_product()
     {
         $user = new User([

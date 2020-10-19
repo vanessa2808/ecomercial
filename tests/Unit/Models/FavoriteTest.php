@@ -3,28 +3,37 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Favorite;
-use App\Models\Order;
-use App\Models\OrderDetail;
 use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\User;
 use Tests\TestCase;
 
 class FavoriteTest extends TestCase
 {
-    use RefreshDatabase;
     protected $favorite;
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
         $this->assertTrue(true);
     }
 
-    public function favorite_database_has_expected_columns()
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->favorite = new Favorite();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        unset($this->favorite);
+    }
+
+    public function test_table_name()
+    {
+        $this->assertEquals('favorites', $this->favorite->getTable());
+    }
+
+    public function favorites_database_has_expected_columns()
     {
         $this->assertTrue(
             Schema::hasColumns('favorites', [
@@ -36,27 +45,37 @@ class FavoriteTest extends TestCase
         );
     }
 
-    public function test_contains_valid_fillable_properties()
+    public function test_fillable()
     {
-        $favorite = new Favorite();
         $this->assertEquals([
             'product_id',
             'user_id',
-        ], $favorite->getFillable());
+        ], $this->favorite->getFillable());
     }
 
-    public function a_favorite_belongs_to_user()
+    public function test_key_name()
     {
-        $favorite = new Favorite();
-        $user_id = $favorite->user();
-        $this->assertBelongsToRelation($user_id, $favorite, new Favorite());
+        $this->assertEquals('id', $this->favorite->getKeyName());
     }
 
-    public function a_favorite_belongs_to_product()
+    public function test_user_relation()
     {
-        $favorite = new Favorite();
-        $product_id = $favorite->product();
-        $this->assertBelongsToRelation($product_id, $favorite, new Favorite());
+        $this->belongsTo_relation_test(
+            User::class,
+            'user_id',
+            'id',
+            $this->favorite->user()
+        );
+    }
+
+    public function test_product_relation()
+    {
+        $this->belongsTo_relation_test(
+            Product::class,
+            'product_id',
+            'id',
+            $this->favorite->product()
+        );
     }
 
 }

@@ -34,6 +34,14 @@ class ProductControllerTest extends TestCase
         parent::setUp();
     }
 
+    public function tearDown(): void
+    {
+        unset($this->productRepositoryMock);
+        unset($this->categoryRepositoryMock);
+        m::close();
+        parent::tearDown();
+    }
+
     public function test_create_request_product_rules()
     {
         $request = new ProductRequest();

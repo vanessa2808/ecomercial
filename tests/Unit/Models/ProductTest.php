@@ -3,35 +3,44 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\OrderDetail;
-use App\Models\Comment;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Collection;
 use Tests\TestCase;
-
 
 class ProductTest extends TestCase
 {
-    use RefreshDatabase;
     protected $product;
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
         $this->assertTrue(true);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->product = new Product();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        unset($this->product);
+    }
+
+    public function test_table_name()
+    {
+        $this->assertEquals('products', $this->product->getTable());
     }
 
     public function products_database_has_expected_columns()
     {
         $this->assertTrue(
             Schema::hasColumns('products', [
+                'id',
                 'category_id',
                 'product_name',
                 'description',
@@ -43,9 +52,8 @@ class ProductTest extends TestCase
         );
     }
 
-    public function test_contains_valid_fillable_properties()
+    public function test_fillable()
     {
-        $product = new Product();
         $this->assertEquals([
             'category_id',
             'product_name',
@@ -53,57 +61,49 @@ class ProductTest extends TestCase
             'product_image',
             'price',
             'amount'
-        ], $product->getFillable());
+        ], $this->product->getFillable());
     }
 
-    public function a_product_has_many_order_detail()
+    public function test_key_name()
     {
-        $product = new Product();
-        $order_detail = $product->order_details();
-        $this->assertHasManyRelation($order_detail, $product, new OrderDetail());
+        $this->assertEquals('id', $this->product->getKeyName());
     }
 
-    public function a_product_has_many_favorite()
+    public function test_category_relation()
     {
-        $product = new Product();
-        $favorite = $product->favorites();
-        $this->assertHasManyRelation($favorite, $product, new Favorite());
+        $this->belongsTo_relation_test(
+            Category::class,
+            'category_id',
+            'id',
+            $this->product->category()
+        );
     }
 
-    public function a_product_has_many_comment()
+    public function test_orderDetails_relation()
     {
-        $product = new Product();
-        $comment = $product->comments();
-        $this->assertHasManyRelation($comment, $product, new Comment());
+        $this->hasMany_relation_test(
+            OrderDetail::class,
+            'product_id',
+            $this->product->order_details()
+        );
     }
 
-    public function a_product_belongs_to_category()
+    public function test_favorites_relation()
     {
-        $product = new Product();
-        $category_id = $product->category();
-        $this->assertBelongsToRelation($category_id, $product, new Product());
+        $this->hasMany_relation_test(
+            Favorite::class,
+            'product_id',
+            $this->product->favorites()
+        );
     }
 
-    protected function setUp(): void {
-        parent::setUp();
-        $category = new Category([
-            'id' => 1,
-            'category_name' => 'Fruit',
-            'parent_id' => null,
-        ]);
-        $category->save();
-        $product = Product::firstOrCreate(['category_id' => $category->id], [
-            'id' => 1,
-            'category_id' => $category->id,
-            'product_name' => 'orange_juice',
-            'description' => 'Good tasty',
-            'product_image' => 'default.png',
-            'price' => '30.0',
-            'created_at' => '2020/3/3',
-            'updated_at' => '2020/3/3',
-        ]);
-        $product->save();
-        $this->assertEquals($category->id, $product->category_id);
+    public function test_comments_relation()
+    {
+        $this->hasMany_relation_test(
+            Comment::class,
+            'product_id',
+            $this->product->comments()
+        );
     }
 
 }

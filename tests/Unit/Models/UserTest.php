@@ -2,27 +2,40 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Favorite;
 use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\Product;
 use App\Models\Suggest;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class UserTest extends TestCase
 {
-    use RefreshDatabase;
-    protected $user, $order;
+    protected $user;
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
         $this->assertTrue(true);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = new User();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        unset($this->user);
+    }
+
+    public function test_table_name()
+    {
+        $this->assertEquals('users', $this->user->getTable());
     }
 
     public function users_database_has_expected_columns()
@@ -35,15 +48,16 @@ class UserTest extends TestCase
                 'phone',
                 'email',
                 'address',
-                'password'
+                'password',
+                'provider',
+                'provider_id',
             ]),
             1
         );
     }
 
-    public function test_contains_valid_fillable_properties()
+    public function test_fillable()
     {
-        $user = new User();
         $this->assertEquals([
             'user_name',
             'role_id',
@@ -51,61 +65,58 @@ class UserTest extends TestCase
             'email',
             'address',
             'password',
-        ], $user->getFillable());
+            'provider',
+            'provider_id',
+        ], $this->user->getFillable());
     }
 
-    public function test_contains_valid_hidden_properties()
+    public function test_key_name()
     {
-        $user = new User();
+        $this->assertEquals('id', $this->user->getKeyName());
+    }
+
+    public function test_hidden()
+    {
         $this->assertEquals([
             'password',
             'remember_token',
-        ], $user->getHidden());
+        ], $this->user->getHidden());
     }
 
-    protected function setUp(): void
+    public function test_orders_relation()
     {
-        parent::setUp();
-        $user = new User([
-            'id' => 1,
-            'user_name' => 'Rion',
-            'role_id' => '1',
-            'phone' => 0374222,
-            'email' => 'yenrion2@gmail.com',
-            'address' => 'Da Nang',
-            'password' => '12341234',
-        ]);
-        $user->save();
-        $users = User::find(1)->get();
-        $this->assertCount(1, $users);
+        $this->hasMany_relation_test(
+            Order::class,
+            'user_id',
+            $this->user->orders()
+        );
     }
 
-    public function a_user_has_many_order()
+    public function test_favorites_relation()
     {
-        $user = new User();
-        $order = $user->order();
-        $this->assertHasManyRelation($order, $user, new Order());
+        $this->hasMany_relation_test(
+            Favorite::class,
+            'user_id',
+            $this->user->favorites()
+        );
     }
 
-    public function a_user_has_many_favorite()
+    public function test_suggests_relation()
     {
-        $user = new User();
-        $favorite = $user->favorites();
-        $this->assertHasManyRelation($favorite, $user, new Favorite());
+        $this->hasMany_relation_test(
+            Suggest::class,
+            'user_id',
+            $this->user->suggests()
+        );
     }
 
-    public function a_user_has_many_suggest()
+    public function test_comments_relation()
     {
-        $user = new User();
-        $suggest = $user->suggests();
-        $this->assertHasManyRelation($suggest, $user, new Suggest());
-    }
-
-    public function a_user_has_many_comment()
-    {
-        $user = new User();
-        $comment = $user->comments();
-        $this->assertHasManyRelation($comment, $user, new Comment());
+        $this->hasMany_relation_test(
+            Comment::class,
+            'user_id',
+            $this->user->comments()
+        );
     }
 
 }

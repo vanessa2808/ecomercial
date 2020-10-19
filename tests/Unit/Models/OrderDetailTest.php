@@ -5,25 +5,36 @@ namespace Tests\Unit\Models;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\User;
 use Tests\TestCase;
 
 class OrderDetailTest extends TestCase
 {
-    use RefreshDatabase;
-    protected $comment;
+    protected $orderDetail;
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
         $this->assertTrue(true);
     }
 
-    public function order_details_database_has_expected_columns()
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->orderDetail = new OrderDetail();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        unset($this->orderDetail);
+    }
+
+    public function test_table_name()
+    {
+        $this->assertEquals('order_details', $this->orderDetail->getTable());
+    }
+
+    public function orderDetails_database_has_expected_columns()
     {
         $this->assertTrue(
             Schema::hasColumns('order_details', [
@@ -36,28 +47,38 @@ class OrderDetailTest extends TestCase
         );
     }
 
-    public function test_contains_valid_fillable_properties()
+    public function test_fillable()
     {
-        $order_details = new OrderDetail();
         $this->assertEquals([
             'product_id',
             'order_id',
             'quantity',
-        ], $order_details->getFillable());
+        ], $this->orderDetail->getFillable());
     }
 
-    public function a_order_detail_belongs_to_order()
+    public function test_key_name()
     {
-        $order_detail = new OrderDetail();
-        $order_id = $order_detail->user();
-        $this->assertBelongsToRelation($order_id, $order_detail, new OrderDetail());
+        $this->assertEquals('id', $this->orderDetail->getKeyName());
     }
 
-    public function a_order_details_belongs_to_product()
+    public function test_order_relation()
     {
-        $order_detail = new OrderDetail();
-        $product_id = $order_detail->user();
-        $this->assertBelongsToRelation($product_id, $order_detail, new OrderDetail());
+        $this->belongsTo_relation_test(
+            Order::class,
+            'order_id',
+            'id',
+            $this->orderDetail->order()
+        );
+    }
+
+    public function test_product_relation()
+    {
+        $this->belongsTo_relation_test(
+            Product::class,
+            'product_id',
+            'id',
+            $this->orderDetail->product()
+        );
     }
 
 }

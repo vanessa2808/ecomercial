@@ -2,32 +2,42 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Comment;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class OrderTest extends TestCase
 {
-    use RefreshDatabase;
     protected $order;
 
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
         $this->assertTrue(true);
     }
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->order = new Order();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        unset($this->order);
+    }
+
+    public function test_table_name()
+    {
+        $this->assertEquals('orders', $this->order->getTable());
+    }
+
     public function orders_database_has_expected_columns()
     {
         $this->assertTrue(
-            Schema::hasColumns('orders', [
+            Schema::hasColumns('order_details', [
                 'id',
                 'user_id',
                 'total_price',
@@ -37,53 +47,37 @@ class OrderTest extends TestCase
         );
     }
 
-    public function test_contains_valid_fillable_properties()
+    public function test_fillable()
     {
-        $order = new Order();
         $this->assertEquals([
             'user_id',
             'total_price',
             'status',
-        ], $order->getFillable());
+        ], $this->order->getFillable());
     }
 
-    public function a_order_belongs_to_user()
+    public function test_key_name()
     {
-        $order = new Order();
-        $user_id = $order->user();
-        $this->assertBelongsToRelation($user_id, $order, new Order());
+        $this->assertEquals('id', $this->order->getKeyName());
     }
 
-    public function a_user_has_many_order_details()
+    public function test_user_relation()
     {
-        $user = new User();
-        $comment = $user->comments();
-        $this->assertHasManyRelation($comment, $user, new Comment());
+        $this->belongsTo_relation_test(
+            User::class,
+            'user_id',
+            'id',
+            $this->order->user()
+        );
     }
 
-    protected function setUp(): void {
-        parent::setUp();
-
-        $user = new User([
-            'id' => 1,
-            'user_name' => 'Rion',
-            'role_id' => '1',
-            'phone' => 0374222,
-            'email' => 'yenrion2@gmail.com',
-            'address' => 'Da Nang',
-            'password' => '12341234',
-        ]);
-        $user->save();
-        $order = new Order([
-            'id' => 1,
-            'user_id' => $user->id,
-            'total_price' => 100.000,
-            'status' => 0,
-        ]);
-        $order->save();
-        $this->assertEquals($user->id, $order->user_id);
-        $orders = User::find(1)->orders()->get();
-        $this->assertCount(1, $orders);
+    public function test_orderDetails_relation()
+    {
+        $this->hasMany_relation_test(
+            OrderDetail::class,
+            'order_id',
+            $this->order->order_details()
+        );
     }
 
 }
