@@ -17,6 +17,8 @@ public/admin_layouts/docs
 public/admin_layouts/pages
 public/admin_layouts/plugins
 public/user_layouts
+composer1.lock
+vendor1
 public/dist
 public/js
 ToogleChek

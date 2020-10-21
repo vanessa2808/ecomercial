@@ -86,7 +86,7 @@ return [
         'search' => 'SEARCH',
         'need' => 'What Do You Need?',
         'title' => 'We bring our healthy and fresh food',
-        'shop_now' => 'SHOP NOW'
+        'shop_now' => 'SHOP NOW',
     ],
     'locale' => [
         'en' => 'English',
@@ -197,5 +197,13 @@ return [
         'fail' => 'Order was not existed',
         'approved' => 'Approved Order',
         'unapproved' => 'Not Approve Order',
+    ],
+    'order' => [
+        'success' => 'Your Order Is Successfully',
+        'fail' => 'Your Order Is Fail',
+        'hello' => 'Hello',
+        'sub_new' => 'You Have New Order!',
+        'check' => 'Check',
+        'detail_new' => 'You have a new order, please check!'
     ]
 ];

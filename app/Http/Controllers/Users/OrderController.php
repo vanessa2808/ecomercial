@@ -3,19 +3,15 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailToAdmin;
+use App\Jobs\SendEmailToUser;
 use App\Models\Cart;
-use App\Models\Order;
-use App\Models\OrderDetail;
-use App\Models\Product;
-use App\Repositories\Eloquent\OrderRepository;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Interfaces\OrderDetaiRepositoryInterface;
-
+use Mail;
 
 class OrderController extends Controller
 {
@@ -42,6 +38,12 @@ class OrderController extends Controller
     {
         if ($this->orderRepository->createOrder($request->all()))
         {
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            $orderedProducts = session('cart');
+            $total =$cart->totalPrice;
+            SendEmailToAdmin::dispatch(config('const.admin_email.admin_mail'), $orderedProducts, $total);
+            SendEmailToUser::dispatch(Auth::user()->email, $orderedProducts, $total);
 
             return redirect()->back()->with('success', trans('messages.order.success'));
 
