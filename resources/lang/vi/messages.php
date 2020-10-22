@@ -126,4 +126,14 @@ return [
         'availability' => 'So luong',
         'shipping' => 'Van Chuyen',
     ],
+    'chart' => [
+        'welcome' => 'Chao Mung Admin Den Voi Trang Thong Ke',
+        'home' => 'Trang Chu',
+        'dashboard' => 'Dashboard',
+        'day' => 'Ngay',
+        'week' => 'Tuan',
+        'month' => 'Thang',
+        'quarter' => 'Quy',
+        'year' => 'Nam',
+    ]
 ];

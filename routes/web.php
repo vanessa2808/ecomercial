@@ -77,6 +77,10 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' =
 
         Route::resource('orders', 'OrderController')->except('store');
 
+        Route::resource('statistic', 'StatisticController')->only([
+            'index'
+        ]);
+
     });
 });
 
