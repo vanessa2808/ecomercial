@@ -22,6 +22,9 @@ return [
     ],
     'pathDefaultImage' => [
         'image' => 'image/ava.jpg'
+    ],
+    'default' => [
+        'zero' => 'O'
     ]
 ];
 
