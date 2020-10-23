@@ -221,7 +221,12 @@ return [
         'quarter' => 'Quarter',
         'year' => 'Year',
         'view' => 'View All',
-        'orderNew' => 'Accept New Order'
+        'orderNew' => 'Accept New Order',
+        'reportDay' => 'Report Per Day',
+        'reportYear' => 'Report Per Year',
+        'reportMonth' => 'Report Per Month',
+        'reportQuarter' => 'Report Per Quarter',
+        'reportWeek' => 'Report Per Week',
     ],
     'mail' => [
         'header_user' => 'Dear you!',
@@ -233,7 +238,12 @@ return [
         'footer_accept' => ' Enjoy my food, Have a good day!',
         'header_admin' => 'Dear admin',
         'footer_admin' => 'Please, visit recipe website with admin role to check the order',
-        'body_admin' => 'You have a new order,'
+        'body_admin' => 'You have a new order',
+        'report' => 'Yearly Recap Report',
+        'action' => 'Action',
+        'another' => 'Another Action',
+        'something' => 'Something else here',
+        'separated' => 'Separated link',
     ]
 
 ];

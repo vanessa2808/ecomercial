@@ -26,8 +26,7 @@
                     <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text"><a
-                                href="admin/statistical/day">@lang('messages.chart.day')</a></span>
+                        <span class="info-box-text"><a href="admin/statistical/day">@lang('messages.chart.day')</a></span>
                         <span class="info-box-number">{{$day}}</span>
                     </div>
                 </div>
@@ -37,11 +36,10 @@
                     <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text"><a
-                                href="admin/statistical/week">@lang('messages.chart.week')</a></span>
+                        <span class="info-box-text"><a href="admin/statistical/week">@lang('messages.chart.week')</a></span>
                         <span class="info-box-number">
-                               {{$week}}
-                             </span>
+                   {{$week}}
+                 </span>
                     </div>
                 </div>
             </div>
@@ -62,8 +60,7 @@
                     <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text"><a
-                                href="admin/statistical/quarter">@lang('messages.chart.quarter')</a></span>
+                        <span class="info-box-text"><a href="admin/statistical/quarter">@lang('messages.chart.quarter')</a></span>
                         <span class="info-box-number">{{$quarter}}</span>
                     </div>
                 </div>
@@ -73,45 +70,45 @@
                     <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text"><a
-                                href={{route('statistic.index')}}>@lang('messages.chart.year')</a></span>
+                        <span class="info-box-text"><a href={{route('statistic.index')}}>@lang('messages.chart.year')</a></span>
                         <span class="info-box-number">{{$year}}</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">@lang('messages.chart.reportYear')</h5>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">@lang('messages.chart.reportWeek')</h5>
 
-                    <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                                <i class="fas fa-wrench"></i>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
                             </button>
-                            <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                <a href="#" class="dropdown-item">@lang('messages.chart.action')</a>
-                                <a href="#" class="dropdown-item">@lang('messages.chart.another')</a>
-                                <a href="#" class="dropdown-item">@lang('messages.chart.something')</a>
-                                <a class="dropdown-divider"></a>
-                                <a href="#" class="dropdown-item">@lang('messages.chart.saparated')</a>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fas fa-wrench"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <a href="#" class="dropdown-item">@lang('messages.chart.action')</a>
+                                    <a href="#" class="dropdown-item">@lang('messages.chart.another')</a>
+                                    <a href="#" class="dropdown-item">@lang('messages.chart.something')</a>
+                                    <a class="dropdown-divider"></a>
+                                    <a href="#" class="dropdown-item">@lang('messages.chart.saparated')</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Dashboard</div>
-                                <div class="panel-body">
-                                    <canvas id="line-chart"></canvas>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Dashboard</div>
+                                    <div class="panel-body">
+                                        <canvas id="order-chart-week"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +117,9 @@
             </div>
         </div>
     </div>
-    </div>
 </section>
 
+@push('js')
+    <script src="{{ asset('/js/chart_week.js') }}"></script>
+@endpush
 @endsection

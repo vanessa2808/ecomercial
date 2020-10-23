@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\Eloquent\ChartRepository;
 use App\Repositories\Eloquent\FavoriteRepository;
+use App\Repositories\Interfaces\ChartRepositoryInterface;
 use App\Repositories\Interfaces\FavoriteRepositoryInterface;
 use App\Repositories\Eloquent\ProductRepository;
 use App\Repositories\Eloquent\UserRepository;
@@ -31,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(FavoriteRepositoryInterface::class, FavoriteRepository::class);
         $this->app->bind(StatisticRepositoryInterface::class, StatisticRepository::class);
+        $this->app->bind(ChartRepositoryInterface::class, ChartRepository::class);
     }
 
     /**
