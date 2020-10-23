@@ -29,7 +29,6 @@
     </div>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="{{ mix('/js/status_button.js') }}"></script>
 <script src="admin_layouts/plugins/jquery/jquery.min.js"></script>
 <script src="admin_layouts/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -42,6 +41,10 @@
 <script src="admin_layouts/plugins/chart.js/Chart.min.js"></script>
 <script src="admin_layouts/dist/js/demo.js"></script>
 <script src="admin_layouts/dist/js/pages/dashboard2.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="/js/pusher.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="{{ mix('/js/notification.js') }}"></script>
 </body>
 </html>

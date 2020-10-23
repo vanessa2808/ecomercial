@@ -10,6 +10,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\CustomerOrder;
 use Mail;
+use App\Models\User;
 
 class SendEmailToUser implements ShouldQueue
 {
