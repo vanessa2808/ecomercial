@@ -1,8 +1,12 @@
-Dear {{Auth::user()->user_name}},
-We receice your order from: Email {{ Auth::user()->email }},
+@component('mail::message')
+    @lang('messages.mail.header_user')
+    @lang('messages.mail.tittle_user')
+    <br/>
+    @lang('messages.mail.body_user')
+    <br/>
+    @lang('messages.mail.footer_user')
 
-Address {{ Auth::user()->address}},
-<br/>
-Phone {{ Auth::user()->phone}}, đã order sản phẩm.
-<br/>
-please, waiting admin to accept your order!
+    @component('mail::button', ['url' => route('home')])
+        {{ trans('messages.home') }}
+    @endcomponent
+@endcomponent

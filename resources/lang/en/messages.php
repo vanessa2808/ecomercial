@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'home' => 'Continue To Buy',
     'register' => 'Register',
     'login' => 'Login',
     'login_admin' => 'Login Admin',
@@ -219,6 +220,20 @@ return [
         'month' => 'Month',
         'quarter' => 'Quarter',
         'year' => 'Year',
+        'view' => 'View All',
+        'orderNew' => 'Accept New Order'
+    ],
+    'mail' => [
+        'header_user' => 'Dear you!',
+        'tittle_user' => 'We receiced your order, thank you so much for your order!',
+        'body_user' => 'We will bring good cuisines for you!',
+        'footer_user' => ' please, waiting my admin to accept your order!',
+        'header_accept' => 'Your order is accepted!',
+        'body_accept' => 'please, waiting shipper to order!',
+        'footer_accept' => ' Enjoy my food, Have a good day!',
+        'header_admin' => 'Dear admin',
+        'footer_admin' => 'Please, visit recipe website with admin role to check the order',
+        'body_admin' => 'You have a new order,'
     ]
 
 ];

@@ -32,8 +32,8 @@
                                     <td>{{$order->user->user_name}}</td>
                                     <td>{{$order->total_price}}</td>
                                     <td>
-                                        <input type="checkbox" class="toggle-class" data-toggle="toggle" data-id="{{$order->id}}"
-                                               data-on="Approved" onchange="changeStatus()"
+                                        <input type="checkbox" onchange="changeStatus()" class="toggle-class" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-id="{{ $order->id}} "
+                                               data-on="Approved""
                                                data-off="unapproved" {{$order->status == true ? 'checked' : ''}}>
                                     </td>
                                     <td>{{$order->created_at}}</td>
