@@ -30,7 +30,7 @@ class UserOrder extends Mailable
     public function build()
     {
         return $this->from('yenrion9941@gmail.com')
-            ->view('users.mail.index')
+            ->markdown('users.mail.index')
             ->subject('TastyRecipe_NewOrder');
     }
 }

@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
-use App\Models\Order;
+use App\Jobs\SendAcceptEmailToUser;
+use App\Jobs\SendEmailToUser;
+use App\Models\Cart;
 use App\Repositories\Interfaces\OrderDetaiRepositoryInterface;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
-use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
 class OrderController extends Controller
@@ -56,13 +59,22 @@ class OrderController extends Controller
 
     public function changeStatus(Request $request)
     {
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $orderedProducts = session('cart');
+        $total =$cart->totalPrice;
         $order = $this->orderRepository->findOrders($request->order_id);
         if ($order) {
             $order->status = $request->status;
             $order->save();
+
+            if ($order->status == config('const.status.approved'))
+            {
+                SendAcceptEmailToUser::dispatch($order->user->email, $orderedProducts, $total);
+            }
             return redirect()->back()->with('Success', trans('messages.status.success'));
-        } else
-        {
+
+        } else {
             return redirect()->back()->with('Fail', trans('messages.status.fail'));
         }
     }

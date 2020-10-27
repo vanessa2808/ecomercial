@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CustomerOrder extends Mailable
+class AcceptOrder extends Mailable
 {
     use Queueable, SerializesModels;
     public $content;
@@ -30,7 +30,7 @@ class CustomerOrder extends Mailable
     public function build()
     {
         return $this->from('yenrion9941@gmail.com')
-            ->markdown('users.emails.index')
-            ->subject('TastyRecipe_NewOrder');
+            ->markdown('users.mail.accept_email')
+            ->subject(trans('messages.order.orderNew'));
     }
 }
