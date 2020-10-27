@@ -7,4 +7,6 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .copy('resources/js/products/status_button.js', 'public/js/status_button.js')
     .copy('resources/js/notifications/notifications.js', 'public/js/notification.js')
     .sass('resources/sass/app.scss', 'public/css/app.css')
-    .sass('resources/sass/category.scss', 'public/css/category.css');
+    .sass('resources/sass/category.scss', 'public/css/category.css')
+    .copy('node_modules/chart.js/dist/Chart.js', 'public/js')
+

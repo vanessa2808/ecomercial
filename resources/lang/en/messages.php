@@ -41,7 +41,8 @@ return [
         'orders' => 'Orders',
         'list_orders' => 'List_orders',
         'suggest' => 'Suggest',
-        'list_suggest' => 'List_suggest'
+        'list_suggest' => 'List_suggest',
+        'statistic' => 'Statistic'
     ],
     'category' => [
         'success' => 'Success',
@@ -208,5 +209,16 @@ return [
         'message' => 'Một đơn hàng vừa được tạo',
         'order' => 'vừa đặt một đơn hàng. Click để xem chi tiết',
         'view' => 'View All'
+    ],
+    'chart' => [
+        'welcome' => 'Welcome To Statistic',
+        'home' => 'Home',
+        'dashboard' => 'Dashboard',
+        'day' => 'Day',
+        'week' => 'Week',
+        'month' => 'Month',
+        'quarter' => 'Quarter',
+        'year' => 'Year',
     ]
+
 ];
