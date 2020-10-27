@@ -8,4 +8,10 @@ interface StatisticRepositoryInterface
     public function getOrderQuarter();
     public function getOrderYear();
     public function getOrderDay();
+    public function statistical();
+    public function getOrderChartDay();
+    public function getOrderChartWeek();
+    public function getOrderChartMonth();
+    public function getOrderChartQuarter();
+
 }

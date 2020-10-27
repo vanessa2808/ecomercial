@@ -32,6 +32,7 @@
 <script src="{{ mix('/js/status_button.js') }}"></script>
 <script src="{{ asset('js/Chart.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="{{ mix('js/order_chart.js') }}"></script>
 <script src="admin_layouts/plugins/jquery/jquery.min.js"></script>
 <script src="admin_layouts/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="admin_layouts/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
@@ -53,6 +54,6 @@
 <script src="admin_layouts/plugins/chart.js/Chart.min.js"></script>
 <script src="admin_layouts/dist/js/demo.js"></script>
 <script src="admin_layouts/dist/js/pages/dashboard3.js"></script>
-
+@stack('js')
 </body>
 </html>

@@ -26,6 +26,5 @@ return [
     'default' => [
         'zero' => 'O'
     ],
-
 ];
 

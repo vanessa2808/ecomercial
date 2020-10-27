@@ -81,11 +81,25 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' =
             'index'
         ]);
 
+        Route::get('/statistical', 'StatisticController@getStatistical');
+
+        Route::get('/statistical/day', 'StatisticController@indexDay');
+
+        Route::get('/statistical/week', 'StatisticController@indexWeek');
+
+        Route::get('/statistical/month', 'StatisticController@indexMonth');
+
+        Route::get('/statistical/quarter', 'StatisticController@indexQuarter');
+
     });
 });
 
 Route::group(['namespace' => 'Admin', 'middleware' => 'verified', 'middleware' => 'administrator'], function () {
     Route::group(['prefix' => 'api'], function () {
         Route::get('/changeStatus', 'OrderController@changeStatus')->name('change.status');
+        Route::get('/statistical/day', 'StatisticController@getStatisticalByDay');
+        Route::get('/statistical/week', 'StatisticController@getStatisticalByWeek')->name('statistical.week');
+        Route::get('/statistical/month', 'StatisticController@getStatisticalByMonth')->name('statistical.month');
+        Route::get('/statistical/quarter', 'StatisticController@getStatisticalByQuarter');
     });
 });
